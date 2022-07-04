@@ -18,7 +18,7 @@ auto Add(T1 a, T2 b) -> decltype(a + b) // ok.. 컴파일 됩니다.
 // 그런데, return 문이 2개 이상이고 서로 다른 타입이면 
 // 컴파일러는 추론할수 없습니다.
 template<typename T1, typename T2>
-auto Add2(T1 a, T2 b)
+auto Add2(T1 a, T2 b) 
 {
 	return a + b;
 
