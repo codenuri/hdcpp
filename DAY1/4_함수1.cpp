@@ -11,7 +11,7 @@ void f1(int a = 0, int b = 0, int c)     {} // error
 void f2(int a = 0, int b ,    int c = 0) {} // error
 void f3(int a    , int b = 0, int c = 0) {} // ok
 
-
+// godbolt.org 에 접속해 보세요
 void foo(int a = 0, int b = 0, int c = 0);
 
 int main()
