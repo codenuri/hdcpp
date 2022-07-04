@@ -1,0 +1,34 @@
+﻿// 4_함수4
+// C++ 함수의 특징 4. 함수 템플릿. 33page =>  중요 합니다. 꼭 정확히 이해하세요
+
+/*
+int square(int a)
+{
+	return a * a;
+}
+double square(double a)
+{
+	return a * a;
+}
+*/
+
+// 구현이 동일(유사)한 함수가 여러개 필요 하면 직접 여러개의 함수를 만들지말고
+// 함수를 만들어내는 "틀(템플릿)"을 제공하면 편리합니다.
+
+template<typename  T>
+T square(T a)
+{
+	return a * a;
+}
+
+int main()
+{
+//	square<int>(3);	// 1. square 틀에 int 를 넣어서 함수생성
+					// 2. 그리고 이부분은 생성된 함수를호출하는 기계어 생성
+//	square<double>(3.4);
+
+	// 템플릿 사용시, 타입 인자 전달을 생략하면
+	// 컴파일러가 함수 인자를 보고 타입을 추론합니다.
+	square(3);
+	square(3.4);
+}
