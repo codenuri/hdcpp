@@ -30,10 +30,14 @@ int main()
 void f1(int) {}
 char f1(int) {}
 
-f1(3);
+f1(3); // error. 리턴 타입만 다른 경우는 오버로딩 할수 없습니다.
+
 
 void f2(int a) {}
-void f2(int a, int b = 0) {}
-f2(0);
+void f2(int a, int b = 0) {}	// error. 인자가 2개 지만
+								// 2번째 인자에 default 값이 있으므로
+								// 아래처럼 호출시 구별안됩니다.
+
+f2(0);	
 
 
