@@ -24,7 +24,15 @@ int main()
 
 	// direct initialization(직접 초기화) : = 없는 초기화
 	// copy   initialization(복사 초기화) : = 있는 초기화
+			// => 클래스에서 약간의 차이가 있는데, 내일 배우게 됩니다.
+
+	int n4 = 3.4;		// ok.. 하지만 좋지 않다.!!
+
+	int n5{ 3.4 };		// error. prevent narrow
+	int n6 = { 3.4 };	// error
+
+	char c1{ 500 };		// error. 1byte에 500을 담을수 없다.		
+				
 }
 
 
-// 안들리시는분은 다시 접속확인해 보세요
