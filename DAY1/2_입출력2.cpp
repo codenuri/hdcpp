@@ -13,4 +13,21 @@ int main()
 	std::cout << std::setw(10) << n << std::endl; // 
 
 	std::cout << std::setw(10) << std::setfill('#') << n << std::endl; // 
+
+	
+	double f = 3.141592;
+
+	std::cout << f << std::endl; // 몇자리까지 나오는지 확인해 보세요
+	
+	// cout 출력 정밀도를 높여서 정확히 나오게 해보세요..
+	// cppreference.com 에서 찾아보세요..
+
+	std::cout << std::setprecision(10) << f << std::endl;
 }
+
+// 해보신분은
+// cppreference.com 에서 "std::setw" 검색 해보세요
+
+
+
+
