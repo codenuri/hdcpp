@@ -37,6 +37,10 @@ int main()
 	int* p4; // ok.. 쓰레기값
 	int& r4; // error. reference 는 반드시 초기값이 필요합니다.
 
+	int* p5 = nullptr; // 또한 포인터는 null 포인터가 있지만
+	int& r5 = 0;		// error. null reference 은 안됩니다.
+						//		  그래서, 항상 안전합니다.
+
 }
 
 
