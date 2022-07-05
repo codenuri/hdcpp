@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstring>   // C 문자열 함수
+#include <cstring>   // <string.h> 의 C++버전. C 문자열 함수
 #include <string>    // C++ string 타입
 
 // 26 page
