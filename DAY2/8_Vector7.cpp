@@ -29,6 +29,7 @@ public:
 			memcpy(tmp, ptr, sizeof(int) * sz);
 
 			delete[] ptr;
+
 			ptr = tmp;
 
 			sz = newsize;
