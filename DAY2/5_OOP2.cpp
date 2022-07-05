@@ -23,6 +23,7 @@ void drawRect(const Rect& rc)
 int main()
 {
 	Rect r = { 1,1,10,10 };
+
 	int n1 = getRectArea(r);
 	drawRect(r);
 }
