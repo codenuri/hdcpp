@@ -28,6 +28,7 @@ int main()
 
 	if (s4 == s3) {} // 비교도 이렇게 사용가능
 
+	std::cout << s4 << std::endl;
 }
 
 
