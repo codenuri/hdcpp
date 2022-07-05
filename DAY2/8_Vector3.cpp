@@ -9,10 +9,11 @@ int main()
 				  // 지역변수의 수명은 "정해진 규칙" 대로만 파괴됩니다.
 
 	int size = 4;
-	int* score = new int[4]; // 동적메모리 할당
+	int* score = new int[size]; // 동적메모리 할당
 							 // => 사용자가 원할때 지울수 있다(아주 자유롭다)
 
 	int count = 0; // 입력된 갯수
+
 
 
 	int n = 0;
