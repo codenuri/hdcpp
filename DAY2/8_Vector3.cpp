@@ -59,6 +59,8 @@ int main()
 	{
 		std::cout << score[i] << std::endl;
 	}
+
+	delete[] score;
 }
 // 실행해서 9개쯤 입력하고 -1 입력해 보세요
 
