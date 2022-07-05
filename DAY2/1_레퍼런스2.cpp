@@ -11,7 +11,9 @@ int main()
 	int a = 1, b = 1, c = 1;
 
 	inc1( a ); // call by value, a증가 실패 
+
 	inc2(&b ); // call by pointer, b증가 성공!
+
 	inc3( c ); // call by reference, c증가 성공
 
 	std::cout << a << std::endl; // 1
