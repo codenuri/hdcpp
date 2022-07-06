@@ -19,6 +19,7 @@ public:
 	}
 	static void goo()	
 	{
+		// c.goo() 처럼 호출해도 4, 6은 에러 입니다.
 		color = 0;	// 4. error
 		cnt = 0;	// 5. ok
 		foo();		// 6. error
