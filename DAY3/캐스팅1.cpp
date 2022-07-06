@@ -36,8 +36,8 @@ int main()
 	int*  p1 = &n2;
 	char* p2 = (char*)&n2;
 
-	printf("%x\n", *p1);
-	printf("%x\n", *p2);
+	printf("%x\n", *p1); // 11223344
+	printf("%x\n", *p2); // 44
 					
 
 }
