@@ -33,7 +33,10 @@ int main()
 
 //	Student s1(99); // error. 학생이 "이름", "나이" 초기화가 안된다.
 
+
 	Student s2("kim", 20, 99); // ok
+		// => Student 의 객체 s2 를 생성한것.
+		// => Student 객체 s2 안에는 Person의 모든 멤버도 포함
 }
 
 
