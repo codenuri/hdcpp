@@ -19,7 +19,8 @@ public:
 	void command()
 	{
 		std::cout << getTitle() << " 메뉴 선택 됨" << std::endl;
-		_getch();
+
+		_getch(); // 아무키나 누를때 까지 잠시 대기
 	}
 };
 
