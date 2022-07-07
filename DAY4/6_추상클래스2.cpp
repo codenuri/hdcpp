@@ -37,6 +37,12 @@ public:
 	virtual void draw() override { std::cout << "draw Circle" << std::endl; }
 };
 
+class Triangle : public Shape
+{
+public:
+	virtual void draw() override { std::cout << "draw Triangle" << std::endl; }
+};
+
 int main()
 {
 	std::vector<Shape*> v;
@@ -57,11 +63,21 @@ int main()
 		else if (cmd == 9)
 		{
 			for (auto p : v)
-				p->draw();
+				p->draw(); // 다형성(polymorphism)
+							// => 동일한 표현식이 상황(객체)에 따라
+							//    다르게 동작하는 것
+							
+			// 객체지향의 3대 특징 : 캡슐화, 상속성, 다형성
+
+			// 다형성의 장점 : 나중에 새로운 도형이 추가되어도
+			//				"p->draw()" 는 수정될 필요 없다.
+			// 
+			//	"새로운 요소가 추가되었는데, 기존 코드가 수정되지 않는다"!!
 		}
 	}
 }
-
+// 파생 멤버함수에 virtual 적으면 파생의 파생만들 때 영향을 끼치는 걸까요?
+// => 네 맞습니다.!! 
 
 
 
