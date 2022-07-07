@@ -40,11 +40,10 @@ public:
 		// ~Base();
 	}
 };
-
 int main()
 {
-	Derived d;	
-//	Derived d(5);
+//	Derived d;		// call Derived::Derived()
+	Derived d(5);	// call Derived::Derived(int)
 }
 
 
