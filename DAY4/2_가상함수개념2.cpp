@@ -46,6 +46,8 @@ int main()
 // late binding, 느리다.  논리적으로 맞다.
 // java, swift, python, kotlin
 // C++, C# 의 "가상함수" 라는 개념이 "dynamic binding" 해달라는 요청
-
+ 
+// 반대로 자바나 파이썬도 스태틱 바인딩으로 요청할 수 있나요?
+// => 안됩니다.
 
 
