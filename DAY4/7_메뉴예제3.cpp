@@ -14,7 +14,15 @@ public:
 	virtual ~BaseMenu() {}
 
 	std::string getTitle() const { return title; }
+
+	// 모든 메뉴는 선택될수 있다.
+	// => 모든 파생클래스의 공통의 특징은 "기반 클래스에도 있어야 한다."
+	// => 구현부를 제공해 줄수 없다. 파생 클래스(팝업메뉴, 메뉴아이템)에서 
+	//    반드시 만들라고 지시..
+	virtual void command()  = 0; 
 };
+
+
 
 class MenuItem : public BaseMenu
 {
@@ -67,6 +75,7 @@ public:
 
 
 			v[cmd - 1]->command(); 
+			// BaseMenu* 안에 command가 있어야 한다.
 
 		}
 	}
