@@ -1,4 +1,10 @@
 ﻿// 상속2
+// 핵심 
+// C++ 의 접근지정자는 3개 입니다
+// => private, protected, public
+
+// 다른 객체지향 언어에는 "대부분 3개를 지원하고", 
+// 추가로 1~2개정도 더 지원하기도 합니다.( internal, package 등)
 
 class Base
 {
