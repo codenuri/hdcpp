@@ -31,7 +31,21 @@ public:
 	// 팝업메뉴 선택시 해야 할일을 생각해 보세요.
 	void command()
 	{
+		int sz = v.size(); // 하위 메뉴 갯수
 
+		for (int i = 0; i < sz; i++)
+		{
+			std::cout << i + 1 << ". " << v[i]->getTitle() << std::endl;
+		}
+
+		std::cout << sz + 1 << ". 종료" << std::endl;
+
+		std::cout << "메뉴 선택하세요 >> ";
+
+		int cmd;
+		std::cin >> cmd;
+
+		v[cmd - 1]->command(); // 선택된 메뉴 실행
 	}
 };
 
@@ -43,10 +57,8 @@ int main()
 
 
 	PopupMenu pm("오늘의 식단");
-
 	pm.addMenu(&m1);
 	pm.addMenu(&m2);
-
 	pm.command(); // 팝업 메뉴를 선택할때 해야 할일을 생각해 보세요
 
 }
