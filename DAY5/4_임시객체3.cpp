@@ -11,7 +11,8 @@ public:
 };
 
 // 임시객체와 함수 인자
-void foo(const Point& pt) {}
+void foo(const Point& pt) {} // 이렇게 하면 임시객체를 받을수 있습니다
+//void foo(Point& pt) {}     // 이렇게 하면 임시객체를 받을수 없습니다
 
 int main()
 {
