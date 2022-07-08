@@ -4,7 +4,9 @@ class Counter
 {
 	int cnt = 0;
 public:
-	Counter increment()
+	// 아래 2줄의 차이점을 정확히 알아야 합니다.
+//	Counter  increment()	// *this 의 복사본(임시객체) 반환
+	Counter& increment()	// 임시객체를 만들지 말라는 의도..
 	{
 		++cnt;
 		return *this;
