@@ -33,5 +33,7 @@ int main()
 	{
 		std::cout << "검색 성공" << std::endl;
 		int n = *ret2;
+		// 반복자는 포인터와 유사하므로 - 로 하면 index 얻을수 있습니다.
+		std::cout << (ret2 - v.begin()) + 1 << std::endl;
 	}
 }
