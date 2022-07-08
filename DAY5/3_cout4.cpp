@@ -34,6 +34,8 @@ int main()
 					 // => operator<<(ostream, Point) 를 만들면 된다.
 					  
 	// cout 와 참조
+	// => 핵심 : cout을 참조(reference)로 받을때는 const 를 붙이면
+	//          "operator<<" 를 사용할수 없습니다.
 	std::ostream& os1 = std::cout;  // os1은 결국 cout의 별명입니다.
 
 	os1 << "hello"; // ok..
