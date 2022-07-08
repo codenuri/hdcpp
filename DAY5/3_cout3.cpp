@@ -15,8 +15,10 @@ namespace std
 		{ 
 			// 아래 한줄이 핵심입니다.
 			// => 인자로 전달받은 함수를 호출하면서 "자신(cout)"을 전달하는것
-			f(*this);   // endl(cout)
-			return *this; 
+		//	f(*this);   // endl(cout)
+		//	return *this; 
+
+			return f(*this); // 이렇게 하세요..
 		}
 	};
 	ostream cout;
