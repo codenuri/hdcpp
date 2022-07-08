@@ -10,7 +10,12 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& os, const Point& pt);
 };
-std::ostream& operator<<(std::ostream& os, const Point& pt)
+// 핵심 : 사용자 정의 타입의 객체를 std::cout 으로 출력되게 하려면
+// => "operator<<" 함수를 일반 함수로 아래처럼 제공하면 됩니다.
+
+// const Point& pt : 이함수 안에서 pt를 변경할 이유는 없습니다.
+//                   그래서 안전하게 하려고 const를 붙입니다. (좋은 코드)
+std::ostream& operator<<(std::ostream& os,  const Point& pt)
 {
 	os << pt.x << ", " << pt.y;
 	return os;
@@ -28,6 +33,18 @@ int main()
 					 // => operator<<(cout, p)
 					 // => operator<<(ostream, Point) 를 만들면 된다.
 					  
+	// cout 와 참조
+	std::ostream& os1 = std::cout;  // os1은 결국 cout의 별명입니다.
+
+	os1 << "hello"; // ok..
+
+
+	const std::ostream& os2 = std::cout;
+
+	os2 << "hello"; // error..
+					// os2.operator<<("hello") 의 원리 인데..
+					// operator<<() 는 상수 멤버 함수가 아닙니다.
+					// "상수객체(os2)는 상수 멤버 함수만 호출가능하다."
 
 }
 
