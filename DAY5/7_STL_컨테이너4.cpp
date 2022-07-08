@@ -32,6 +32,8 @@ int main()
 
 	v2[1].push_back(10);
 	v2[1].push_back(20);
+
+	std::list<int> s(10, 2); // 10개를 2로 초기화
 }
 
 
