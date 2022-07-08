@@ -10,6 +10,9 @@ public:
 	void print() const { std::cout << x << ", " << y << std::endl; }
 
 	// 멤버함수로 구현한 operator+ 함수 (함수이름이 "operator+" 입니다.)
+
+	// + 연산자는 "이항 연산자" 이지만, 
+	// 멤버 함수 로 구현하면 인자는 한개가 됩니다. p1 + p2 => p1.operator+(p2)
 	Point operator+(const Point& pt)
 	{
 		std::cout << "member operator+" << std::endl;
@@ -17,7 +20,6 @@ public:
 		Point temp(x + pt.x, y + pt.y);
 		return temp;
 	}
-
 };
 
 int main()
@@ -25,10 +27,10 @@ int main()
 	Point p1(1, 1);
 	Point p2(2, 2);
 
-
 	Point p3 = p1 + p2;   // 1. p1.operator+(p2) 가 있으면 사용
 						  // 2. operator+(p1, p2) 가 있으면 사용
 						  // 둘다 없다면 컴파일 에러..
 
+	p3.print(); // 3, 3
 }
 
