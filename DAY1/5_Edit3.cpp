@@ -67,6 +67,11 @@ public:
 int main()
 {
 	Edit e;
+
+	LimitDigitValidator v(5);
+
+	e.set_validator(&v); // edit 에 validation 정책 연결
+
 	while (1)
 	{
 		std::cout << e.get_data() << std::endl;
