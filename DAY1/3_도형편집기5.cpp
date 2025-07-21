@@ -16,8 +16,22 @@ class Shape
 public:
 	virtual ~Shape() {}
 
+	// 아래 함수는 virtual 로 할까요 ? non-virtual 로 할까요 ?
+	// => 파생클래스가 override 할 필요 없습니다.
+	// => non-virtual
+	void set_color(int c) { color = c;}
+
+	// 아래 함수는 ?
+	int get_area() {return 0;}
+
+
 	virtual void draw() { std::cout << "draw Shape\n"; }
 };
+
+
+
+
+
 
 class Rect : public Shape
 {
