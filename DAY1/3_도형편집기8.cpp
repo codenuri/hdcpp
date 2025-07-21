@@ -33,18 +33,25 @@ class Rect : public Shape
 {
 public:
 	void draw() { std::cout << "draw rect\n"; }
+
+	// 참고 :가상함수 override 시 반환 타입 변경 가능합니다.(단, 상속관계타입만)
+	virtual Rect* clone()
+	{
+		return new Rect(*this); 
+	}	
 };
 
 class Circle : public Shape
 {
 public:
 	void draw() { std::cout << "draw circle\n"; }
+
+	virtual Circle* clone()
+	{
+		return new Circle(*this); 
+	}	
 };
-class Triangle : public Shape
-{
-public:
-	void draw() { std::cout << "draw Triangle\n"; }
-};
+
 int main()
 {
 	std::vector<Shape*> v; 
@@ -71,6 +78,11 @@ int main()
 			int k;
 			std::cin >> k;
 
+			// 이제 조사할 필요없이 요청하면 됩니다.
+			v.push_back( v[k]->clone() );
+
+			// 자바같은 언어 에서 이런 개념을 아래와 같이 표현합니다. 의미 생각해보세요
+			// "Don't Ask Do It"
 	
 		}
 	}
