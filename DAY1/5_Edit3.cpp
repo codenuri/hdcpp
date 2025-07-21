@@ -30,6 +30,10 @@ public:
 	{
 		return s.size() < value && isdigit(c);
 	}
+	bool is_complete(const std::string& s) override 
+	{ 
+		return s.size() == value;
+	}
 };
 //---------------------
 // DIP : Edit 는 항상 추상(IValidator) 에 의존해야 합니다.
