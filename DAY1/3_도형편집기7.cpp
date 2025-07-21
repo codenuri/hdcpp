@@ -68,6 +68,8 @@ int main()
 			// => k번째 만든 도형이 어떤 도형일까요 ?
 
 			// 방법#1. 조사 하자.
+			// => OCP 를 만족할수 없는 안좋은 디자인
+			// => 해결책은 다음 소스에서
 			if ( Rect* r = dynamic_cast<Rect*>(v[k]); r != nullptr)
 			{				
 			}
