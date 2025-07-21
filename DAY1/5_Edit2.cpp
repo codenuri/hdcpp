@@ -11,6 +11,13 @@ class Edit
 {
 	std::string data;
 public:
+
+	// 변해야 하는 부분(validation 정책) 을 가상함수로 분리
+	virtual bool validate( char c)
+	{
+		return true;
+	}
+
 	std::string get_data()
 	{
 		data.clear(); 
@@ -20,7 +27,7 @@ public:
 			
 			if ( c == 13 ) break;
 			
-			if ( isdigit(c) )
+			if ( validate(c) ) // validation 정책은 가상함수에 의존
 			{
 				data.push_back(c);
 				std::cout << c;
