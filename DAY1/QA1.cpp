@@ -14,10 +14,16 @@ struct X : public A, public B
 int main()
 {
 	X x;
-	A* pa = &x;
-	B* pb = &x;
+	A* pa = &x;     // 1000
+//	B* pb = &x;     // &x + sizeof(A) => 1004
+//	B* pb = (B*)&x; // &x + sizeof(A) => 1004
+//	B* pb = static_cast<B*>(&x); // &x + sizeof(A) => 1004
 
-	printf("%p\n", &x);
-	printf("%p\n", pa);
-	printf("%p\n", pb);
+	// 핵심 
+	B* pb = reinterpret_cast<B*>(&x); //??
+
+
+	printf("%p\n", &x); // 1000
+	printf("%p\n", pa); // &x와 동일.  
+	printf("%p\n", pb); // 캐스팅 방법에 따라 달라짐. 위 캐스팅 코드 참고
 }
