@@ -63,12 +63,12 @@ int main()
 			int k;
 			std::cin >> k;
 
-			// k 번째 만든 도형을 복사해서 한개 더만든후 v에 추가
+			// k 번째 만든 도형을 복사해서 한개 더 만든후 v에 추가
 			// => 어떻게 구현해야 할까요 ?
 			// => k번째 만든 도형이 어떤 도형일까요 ?
 
 			// 방법#1. 조사 하자.
-			if ( Rect* r = dynamic_cast<Rect*>(v[k-1]); r != nullptr)
+			if ( Rect* r = dynamic_cast<Rect*>(v[k]); r != nullptr)
 			{				
 			}
 		}
