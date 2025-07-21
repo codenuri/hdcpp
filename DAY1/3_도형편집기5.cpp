@@ -22,7 +22,10 @@ public:
 	void set_color(int c) { color = c;}
 
 	// 아래 함수는 ?
-	int get_area() {return 0;}
+	// => 모든 도형은 면적 구하는 방법이 다르므로
+	// => override 필요
+	// => virtual!!
+	virtual int get_area() {return 0;}
 
 
 	virtual void draw() { std::cout << "draw Shape\n"; }
