@@ -7,9 +7,15 @@
 
 class Rect 
 {
-	int x, y, w, h;
+//	int x, y, w, h; 와 생성자는 생략
 public:
 	void draw() { std::cout << "draw rect\n"; }
+};
+
+class Circle
+{
+public:
+	void draw() { std::cout << "draw circle\n"; }
 };
 
 int main()
