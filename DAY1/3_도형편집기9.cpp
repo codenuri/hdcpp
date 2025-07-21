@@ -17,17 +17,19 @@ public:
 	// => 변하지 않는 코드 내부에 숨은 변하는 코드는 분리 되어야 한다.
 	// => 변하는 것을 가상함수로 분리한다
 
+protected:
 	virtual void draw_imp()
 	{
-		
+		std::cout << "draw Shape\n"; 		
 	}
 
-	virtual void draw() 
+public:
+	void draw() 
 	{ 
-		std::cout << "mutex.lock\n"; 
-		
-		std::cout << "draw Shape\n"; 
+		std::cout << "mutex.lock\n"; 		
 
+		draw_imp();
+		
 		std::cout << "mutex.unlock\n"; 
 	}
 	
@@ -47,8 +49,10 @@ public:
 class Rect : public Shape
 {
 public:
-	void draw() { std::cout << "draw rect\n"; }
+protected:
+	void draw_imp() { std::cout << "draw rect\n"; }
 
+public:
 	virtual Rect* clone()
 	{
 		return new Rect(*this); 
@@ -58,8 +62,10 @@ public:
 class Circle : public Shape
 {
 public:
-	void draw() { std::cout << "draw circle\n"; }
+protected:
 
+	void draw_imp() { std::cout << "draw circle\n"; }
+public:
 	virtual Circle* clone()
 	{
 		return new Circle(*this); 
