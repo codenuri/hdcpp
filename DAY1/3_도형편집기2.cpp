@@ -26,7 +26,9 @@ public:
 
 int main()
 {
-	std::vector<Rect*> v; // Rect 만 보관 가능한 컨테이너
+//	std::vector<Rect*> v; // Rect 만 보관 가능한 컨테이너
+	std::vector<Shape*> v; // 모든 도형을 보관 가능한 컨테이너
+							// <== 객체지향 디자인의 핵심!!!
 
 }
 
