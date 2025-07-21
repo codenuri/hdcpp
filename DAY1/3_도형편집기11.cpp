@@ -3,6 +3,8 @@
 
 // 가상함수 vs 순수 가상함수
 
+class not_implemented{};
+
 class Shape 
 {
 	int color = 0;
@@ -37,14 +39,23 @@ public:
 	// => clone()이 자주 사용되는 함수가 아니면 2번도 가능
 	// virtual Shape* clone() = 0;
 
-	
-	// #2. 기본 구현에서 예외 발생
 
+	// #2. 기본 구현에서 예외 발생
+	// => clone 을 override 하지 않고 사용하지 않으며 => ok
+	// => clone 을 override 하지 않고 사용하면 => 예외 발생
+	// => clone 을 override 하고 사용하면 => ok
+
+	// 의도 : 필요하면 만들라는 것
+	// => C#, Python 에서 많이 사용
+	// => 안전성이 부족하다.
 	virtual Shape* clone()
 	{
-		return new Shape(*this); 
+		throw not_implemented(); 
 	}
 
+	// #1, #2 도 좋은데,, C 스타일의 기본 구현은 잘못된 값 반환도
+	// 역시 널리 사용됩니다.
+	// 도움말 : get_area() 호출시 0이 나오면 "면적구할수 없음" 이라고 약속
 	virtual int get_area() {return 0;}
 };
 
