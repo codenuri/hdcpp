@@ -11,13 +11,14 @@ public:
 class HDCamera
 {
 public:	
-	void take() { std::cout << "Take 좋은 Picture" << std::endl; }
+	void take() { std::cout << "Take HD Picture" << std::endl; }
 };
 
 class People
 {
 public:	
 	void use_camera(Camera* p) { p->take(); }
+	void use_camera(HDCamera* p) { p->take(); }
 };
 
 int main()
@@ -25,6 +26,9 @@ int main()
 	People p;
 	Camera c;
 	p.use_camera(&c);
+
+	HDCamera hc;
+	p.use_camera(&hc);	
 }
 
 
