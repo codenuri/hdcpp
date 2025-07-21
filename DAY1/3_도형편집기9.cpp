@@ -1,6 +1,11 @@
 #include <iostream>
 #include <vector>
 
+// #10. template method 패턴
+// => 변하지 않은 알고리즘을 담은 메소드를 기반 클래스가 제공하고
+// => 변해야 하는 부분만 가상함수로 분리해서 파생 클래스가 재정의 할수 있게
+//    하는 패턴
+// => 가장 널리 사용
 
 class Shape 
 {
