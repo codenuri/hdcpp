@@ -1,4 +1,4 @@
-class Animal
+﻿class Animal
 {
 public:
 	int age;
@@ -46,6 +46,11 @@ int main()
 	Dog* pdog = static_cast<Dog*>(p3);
 
 	pdog->color = 10; // ok <=== A
+
+
+	// #5. 조사할수 없나요 ?
+	// => 가능합니다.
+	// => 1_upcasting1-1.cpp 추가 
 
 }
 
