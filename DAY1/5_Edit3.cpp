@@ -76,6 +76,9 @@ int main()
 
 	e.set_validator(&v); // edit 에 validation 정책 연결
 
+	LimitDigitValidator v2(15);
+	e.set_validator(&v2); // validation 정책 변경
+
 	while (1)
 	{
 		std::cout << e.get_data() << std::endl;
