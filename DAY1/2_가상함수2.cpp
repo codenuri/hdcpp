@@ -26,6 +26,10 @@ int main()
 	// 소멸자 호출도 결국 함수호출 입니다.
 	// p->소멸자() 가 됩니다.
 	// #1. static binding 할지 dynamic 할지 결정해야 합니다.
-	// #2. 
+	// #2. 컴파일러는 p가 Base* 라는 것만 알고 있으므로
+	//     Base 클래스에서 소멸자가 가상인지만 조사
+	//	   (Derived 조사가 아님)
+	// 가상이 아니면 : static binding, ~Base() 호출
+	// 가상이 면     : dynamic binding, ~Derived() 호출
 
 }	
