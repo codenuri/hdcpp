@@ -50,9 +50,9 @@ public:
 		{
 			char c = _getch();
 			
-			if ( c == 13 ) break;
+			if ( c == 13 && ( val == nullptr || val->is_complete(data) )  ) break;
 			
-			if ( isdigit(c) )
+			if ( val == nullptr || val->validate(data, c) ) // 유효성 확인은 다른 객체에 위임
 			{
 				data.push_back(c);
 				std::cout << c;
