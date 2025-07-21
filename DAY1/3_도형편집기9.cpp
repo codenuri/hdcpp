@@ -12,10 +12,23 @@ public:
 	virtual int get_area() {return 0;}
 
 
-	
+
+	// 핵심 : 공통성과 가변성의 분리
+	// => 변하지 않는 코드 내부에 숨은 변하는 코드는 분리 되어야 한다.
+	// => 변하는 것을 가상함수로 분리한다
+
+	virtual void draw_imp()
+	{
+		
+	}
+
 	virtual void draw() 
 	{ 
+		std::cout << "mutex.lock\n"; 
+		
 		std::cout << "draw Shape\n"; 
+
+		std::cout << "mutex.unlock\n"; 
 	}
 	
 
