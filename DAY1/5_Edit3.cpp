@@ -20,26 +20,29 @@ struct IValidator
 
 
 
-class LimitDigitValidator
+class LimitDigitValidator : public IValidator
 {
 	int value;
 public:
 	LimitDigitValidator(int n) : value(n) {}
 
-	bool validate(const std::string& s, char c)
+	bool validate(const std::string& s, char c) override
 	{
 		return s.size() < value && isdigit(c);
 	}
 };
-
+//---------------------
+// DIP : Edit 는 항상 추상(IValidator) 에 의존해야 합니다.
 
 class Edit
 {
 	std::string data;
 
-	LimitDigitValidator* val = nullptr;
-
+	IValidator* val = nullptr;
 public:
+	void set_validator(IValidator* p) { val = p;}
+
+
 	std::string get_data()
 	{
 		data.clear(); 
