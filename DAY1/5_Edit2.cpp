@@ -6,6 +6,7 @@
 // => Edit 는 라이브러리 이므로 Edit 자체 수정은 없어야 합니다.
 
 // 방법 #1. 변하는 것을 가상함수로
+// => template method
 
 class Edit
 {
