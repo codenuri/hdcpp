@@ -20,9 +20,13 @@ public:
 //	virtual void goo(double){}
 
 	// #3. 위문제의 해결책으로 c++11 에서 override 키워드 도입
+	// override : 새로운 함수가 아닌 기반 클래스 함수를 override 한다고
+	//			  알리는것
+	//			  오타 발생시 에러!!
+//	virtual void fooo()      override {} // error
+//	virtual void goo(double) override {} // error
 
-	virtual void fooo() override {}
-	virtual void goo(double) override {}
+	virtual void foo()      override {} // ok
 
 };
 
