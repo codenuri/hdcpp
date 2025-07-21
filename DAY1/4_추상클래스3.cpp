@@ -18,7 +18,7 @@ class People
 public: 
 	// 추상클래스 라도 포인터 변수는 사용가능
 	void use_camera(ICamera* c) { c->take();}
-}
+};
 
 // 모든 카메라는 규칙을 지켜야 한다.
 class Camera : public ICamera
@@ -33,6 +33,11 @@ public:
 	void take() { std::cout << "Take HD Picture" << std::endl; }
 };
 
+class UHDCamera: public ICamera
+{
+public:	
+	void take() { std::cout << "Take UHD Picture" << std::endl; }
+};
 
 int main()
 {
@@ -42,6 +47,9 @@ int main()
 
 	HDCamera hc;
 	p.use_camera(&hc);	
+
+	UHDCamera uhc;
+	p.use_camera(&uhc);	// OCP 만족!!
 }
 
 
