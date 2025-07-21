@@ -39,9 +39,23 @@ public:
 	}
 };
 
+// Edit 의 Validation 정책을 변경하려면
+// 파생 클래스를 만들어서 약속된 가상함수를 override 하면 됩니다.
+
+class NumEdit : public Edit 
+{
+public:
+	bool validate(char c) override 
+	{
+		return isdigit(c);
+	}
+};
+
 int main()
 {
-	Edit e;
+//	Edit e;
+	NumEdit e;
+
 	while (1)
 	{
 		std::cout << e.get_data() << std::endl;
