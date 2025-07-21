@@ -2,6 +2,10 @@
 #include <vector>
 
 // #3-1. 해결책 #1. 캐스팅
+// => 아래 코드는 에러 없이 예상대로 잘동작합니다.
+
+// 그런데!!!
+// => 새로운 도형 Triangle 이 추가되면
 
 
 class Shape 
@@ -22,6 +26,13 @@ class Circle : public Shape
 public:
 	void draw() { std::cout << "draw circle\n"; }
 };
+
+class Triangle : public Shape
+{
+public:
+	void draw() { std::cout << "draw triange\n"; }
+};
+
 
 int main()
 {
