@@ -21,15 +21,24 @@ public:
 	void set_color(int c) { color = c;}
 
 
+	// 가상함수      : override 하지 않으면 기본 구현 제공할것 이라는 의도
+	// 순수 가상함수 : 반드시 만들라는 의미
 
+	// "Shape" 는 추상적 개념
+	// => "draw_imp" 의 기본 구현을 제공할수는 없다.
 protected:
-	virtual void draw_imp()
-	{
-		std::cout << "draw Shape\n"; 		
-	}
+	virtual void draw_imp() = 0;
 
 public:
 
+	// clone 은
+	// #1. = 0 으로 해도 좋습니다. 엄격하고 안전한 코드
+	// => 하지만 순수가상함수가 너무 많으면 파생클래스가 해야할 작업이 많습니다.
+	// => clone()이 자주 사용되는 함수가 아니면 2번도 가능
+	// virtual Shape* clone() = 0;
+
+	
+	// #2. 기본 구현에서 예외 발생
 
 	virtual Shape* clone()
 	{
