@@ -48,13 +48,15 @@ int main()
 				}
 				*/
 				// 위 코드는 C++17 에서 나온 새로운 if 문을 사용하면 편리
+				// if (초기화 구문 ; 조건식 )
 				if ( Rect* r = dynamic_cast<Rect*>(s); r != nullptr )
 				{
 					r->draw();
 				}
-
-
-				s->draw(); 
+				else if ( Circle* c = dynamic_cast<Circle*>(s); c != nullptr )
+				{
+					c->draw();
+				}
 			}
 		}
 	}
