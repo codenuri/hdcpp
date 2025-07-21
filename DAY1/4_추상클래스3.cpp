@@ -16,40 +16,23 @@ public:
 class People 
 {
 public: 
-	void use_camera(? c) { c->take();}
+	// 추상클래스 라도 포인터 변수는 사용가능
+	void use_camera(ICamera* c) { c->take();}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-class Camera
+// 모든 카메라는 규칙을 지켜야 한다.
+class Camera : public ICamera
 {
 public:	
 	void take() { std::cout << "Take Picture" << std::endl; }
 };
 
-class HDCamera
+class HDCamera: public ICamera
 {
 public:	
 	void take() { std::cout << "Take HD Picture" << std::endl; }
 };
 
-class People
-{
-public:	
-	void use_camera(Camera* p) { p->take(); }
-	void use_camera(HDCamera* p) { p->take(); }
-};
 
 int main()
 {
