@@ -7,6 +7,18 @@
 // #2. 변하는 것을 다른 클래스로 => strategy 패턴
 
 // Validation 만 수행하는 클래스
+// 교체 가능한 설계를 위해서 인터페이스 필요
+struct IValidator
+{
+	virtual bool validate(const std::string& s, char c) = 0;
+	virtual bool is_complete(const std::string& s) { return true;}
+
+	virtual ~IValidator() {}
+};
+
+// 주민 등록 번호 : 831    1    확인
+
+
 
 class LimitDigitValidator
 {
@@ -24,6 +36,9 @@ public:
 class Edit
 {
 	std::string data;
+
+	LimitDigitValidator* val = nullptr;
+
 public:
 	std::string get_data()
 	{
