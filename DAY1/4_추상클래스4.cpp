@@ -23,11 +23,12 @@
 // LSP
 // ISP
 // DIP : 구체(concrete)에 의존하지 말고 추상에 의존해라
+// => 의존관계 역전(Dependency Inversion Principle)
 // => HDCamera 가 필요하지만
 // => 사용할때는 ICamera* 를 사용하라는 것
+//-----------------------------------
 
-
-
+// 규칙 : 모든 카메라는 아래 클래스로 부터 파생되어야 한다.
 class ICamera 
 {
 public:
