@@ -16,7 +16,7 @@ class Shape
 public:
 	virtual ~Shape() {}
 
-	void draw() { std::cout << "draw Shape\n"; }
+	virtual void draw() { std::cout << "draw Shape\n"; }
 };
 
 class Rect : public Shape
