@@ -16,6 +16,9 @@
 
 // #9. 리팩토링 용어 입니다. 의미를 이해해 보세요
 // "replace conditional with polymorphism"
+// => 코드에 제어문(if)이 있으면 OCP 를 만족할수 없다. 도형편집기4.cpp
+// => 다형성(가상함수)로 변경하는 것을 고려해라        도형편집기5.cpp
+//													(draw 가상함수도입)
 
 
 class Shape 
