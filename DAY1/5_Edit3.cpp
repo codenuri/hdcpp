@@ -6,6 +6,21 @@
 // #1. 변하는 것을 가상함수로 => template method
 // #2. 변하는 것을 다른 클래스로 => strategy 패턴
 
+// Validation 만 수행하는 클래스
+
+class LimitDigitValidator
+{
+	int value;
+public:
+	LimitDigitValidator(int n) : value(n) {}
+
+	bool validate(const std::string& s, char c)
+	{
+		return s.size() < value && isdigit(c);
+	}
+};
+
+
 class Edit
 {
 	std::string data;
