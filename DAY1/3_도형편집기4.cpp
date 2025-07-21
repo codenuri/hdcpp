@@ -6,6 +6,16 @@
 
 // 그런데!!!
 // => 새로운 도형 Triangle 이 추가되면
+// => main 함수가 변경(if 문 추가)되어야 합니다.
+
+// OCP 이론
+// => 기능 확장에 열려있고(Open, 나중에 코드가 추가되어도)
+// => 코드수정에 다혀있어야(Close, 기존 코드가 수정되지 않게)
+// => 하라는 이론(Principle)
+
+// Open-Close Principle
+
+// 아래 코드는 OCP 위반
 
 
 class Shape 
