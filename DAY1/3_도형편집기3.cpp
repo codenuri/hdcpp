@@ -36,7 +36,9 @@ int main()
 		else if ( cmd == 9 )
 		{
 			for ( auto s : v)
-				s->draw();
+				s->draw(); // 여기서 에러. 
+						   // 원인 : s 는 Shape* 인데, Shape 에는 draw가 없다.
+						   // 해결책은 다음소스에서 
 		}
 	}
 }
