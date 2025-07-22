@@ -83,7 +83,6 @@ public:
 	BaseMenu* get_submenu(int idx) { return v[idx]; }
 };
 
-
 int main()
 {
 	PopupMenu* root = new PopupMenu("ROOT");
@@ -96,7 +95,12 @@ int main()
 	root->add( new MenuItem("HD",  21));
 
 	// 아래 멤버 함수를 만들어 봅시다.
-	auto m = root->get_submenu(0);
+	auto m = root->get_submenu(0);  // 결국 m 은 pm1 과 동일
+
+	//------------------------------------
+	// 아래 코드를 생각해 봅시다.
+	root->get_submenu(0)->add( new MenuItem("BLACK", 13));
+	
 
 
 
