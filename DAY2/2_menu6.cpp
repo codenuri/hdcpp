@@ -40,6 +40,11 @@ public:
 
 	void add(BaseMenu* m) { v.push_back(m);}
 
+	~PopupMenu()
+	{
+		for( auto m : v)
+			delete m;
+	}
 
 
 
@@ -104,7 +109,7 @@ int main()
 	root->command();
 
 	// 메모리 안전하게 삭제하려면
-	// #1. 스마트 포인터 사용 => std::shared_ptr
+	// #1. 스마트 포인터 사용 => std::shared_ptr   (복습할때 적용해 보세요)
 	// #2. root 메뉴만 삭제하면 자동 삭제되도록 디자인
 	delete root; // 이순간 PopupMenu 소멸자 호출
 				 // 소멸자에서 자신이 가진 모든 하위 메뉴 삭제
