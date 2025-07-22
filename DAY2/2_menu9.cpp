@@ -82,16 +82,29 @@ public:
 class MenuItem : public BaseMenu
 {
 	int id;
+
+	using HANDLER = void(*)();  // typedef void(*HANDLER)()
+
+	HANDLER handler = nullptr;
+
 public:
 	MenuItem(const std::string& t, int i) : BaseMenu(t), id(i) {}
 
+	void set_handler(HANDLER h) { handler = h;}
+
 	void command() override
 	{
-		std::cout << get_title() << "메뉴 선택됨\n";
+		// 여기서 어떤 작업을 하면
+		// 모든 메뉴가 동일한 작업을 하게 됩니다.
 
-		_getch(); 
+		// 여기서는 등록된 함수를 다시 호출해야 합니다.
+
+		if ( handler != nullptr )
+			handler();
 	}
 };
+
+void foo() { std::cout << "foo\n";}
 
 int main()
 {
@@ -101,6 +114,12 @@ int main()
 
 	root->add(pm1);
 	root->add(pm2);
+
+	MenuItem* mi = new MenuItem("WHITE", 10);
+	mi->set_handler(&foo);
+
+	pm1->add(mi);
+
 
 	pm1->add( new MenuItem("RED",   11));
 	pm1->add( new MenuItem("GREEN", 12));
