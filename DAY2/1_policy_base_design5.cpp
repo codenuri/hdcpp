@@ -29,6 +29,13 @@ public:
 	debug_alloc(const debug_alloc<U>&) {}  // generic 생성자라는 개념
 };
 
+// 완벽한 allocator 코드는 ==, != 를 제공해야 합니다.
+template<typename T>
+bool operator==(const debug_alloc<T>&, const debug_alloc<T>&) {return true;}
+template<typename T>
+bool operator!=(const debug_alloc<T>&, const debug_alloc<T>&) {return true;}
+
+
 int main()
 {
 //	std::vector<int> v; // == std::vector<int, std::allocator<int>> 의 의미
