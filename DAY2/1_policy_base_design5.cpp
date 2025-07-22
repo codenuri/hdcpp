@@ -62,7 +62,7 @@ int main()
 
 	// 실제ㅔ 메모리를 해지 하려면
 	v.clear(); // 먼저 clear 하고, size 를 0으로 capacity(메모리) 유지
-	v.shink_to_fit(); // capaciy 를 size 로 변경 (size 가 0이면 해지)
+	v.shrink_to_fit(); // capaciy 를 size 로 변경 (size 가 0이면 해지)
 
 	std::cout << v.size() << ", " << v.capacity() << std::endl;
 	std::cout << "-----------------" << std::endl;	
