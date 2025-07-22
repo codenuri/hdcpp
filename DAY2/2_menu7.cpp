@@ -78,10 +78,10 @@ public:
 	
 
 	}
+
+	// 자신의 하위 메뉴 포인터를 반환하는 함수
+	BaseMenu* get_submenu(int idx) { return v[idx]; }
 };
-
-
-
 
 
 int main()
@@ -95,7 +95,8 @@ int main()
 	root->add(pm1);
 	root->add( new MenuItem("HD",  21));
 
-
+	// 아래 멤버 함수를 만들어 봅시다.
+	auto m = root->get_submenu(0);
 
 
 
