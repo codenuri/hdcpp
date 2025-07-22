@@ -104,7 +104,7 @@ public:
 	}
 };
 
-void foo() { std::cout << "foo\n";}
+void foo() { std::cout << "foo\n";_getch();}
 
 int main()
 {
