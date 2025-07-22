@@ -15,8 +15,10 @@ int main()
 
 //	for( auto e : std::views::take(v, 5)) 
 //	for( auto e : reverse(take(v, 5))) 
-	for( auto e : filter(reverse(take(v, 5)), odd) ) 
-	{
+//	for( auto e : filter(reverse(take(v, 5)), odd) )  // 이표기를
+
+	for( auto e : v | reverse | take(5) | filter(odd) )  // 이표기로도
+	{													// 가능.
 		std::cout << e << std::endl;
 	}
 
