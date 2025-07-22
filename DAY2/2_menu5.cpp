@@ -16,28 +16,25 @@
 
 class BaseMenu 
 {
+	std::string title;
 public:
+	BaseMenu(const std::string& t) : title(t) {}
 
+	virtual ~BaseMenu() {} 
+	
+	std::string get_title() const { return title;}
 };
-
-
-
-
-
-
-
-
 
 
 
 class MenuItem 
 {
-	std::string title;
+
 	int id;
 public:
 	MenuItem(const std::string& t, int i) : title(t), id(i) {}
 
-	std::string get_title() const { return title;}
+
 
 	void command()
 	{
