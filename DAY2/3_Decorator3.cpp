@@ -18,11 +18,11 @@ public:
 };
 
 
-class Emoticon 
+class Emoticon  : public IDraw
 {
-	PhotoSticker* origin = nullptr; 
+	IDraw* origin = nullptr; 
 public:	
-	Emoticon(PhotoSticker* o) : origin(o) {}
+	Emoticon(IDraw* o) : origin(o) {}
 
 	void draw()
 	{
@@ -32,11 +32,12 @@ public:
 	}
 };
 
-class Frame 
+class Frame  : public IDraw
 {
-	PhotoSticker* origin = nullptr; 
+	IDraw* origin = nullptr; 
 public:	
-	Frame(PhotoSticker* o) : origin(o) {}
+	Frame(IDraw* o) : origin(o) {}
+
 	void draw()
 	{
 		std::cout << "--------------------\n";	
@@ -56,5 +57,3 @@ int main()
 	Frame f(&e); 
 	f.draw();		
 }
-
-// 64page
