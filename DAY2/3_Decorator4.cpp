@@ -69,9 +69,16 @@ int main()
 	// A. 그냥.. 아래 처럼하면 안되나요 ?
 	PhotoSticker p;
 	p.take();
+	p.draw(); // 필터 없는 그림
 	p.add_filter(new EmoticonFilter);
 	p.add_filter(new FrameFilter);
 	p.draw(); // 원래 그림그리고, 등록된 필터의 draw도 호출
 
 	// A 와 Decorator 패턴의 차이는 ??
+	// A : 필터 추가후에는 원본기능만 사용하고 싶다면
+	//     다시 필터 제거해야 합니다.
+
+	// Decorator : 언제라도 기능 추가 전의 객체에 접근 가능합니다.
+	// ps : 기능추가전의 객체
+	// e, f : 기능 추가후의 객체
 }
