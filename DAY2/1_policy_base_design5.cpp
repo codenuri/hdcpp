@@ -30,10 +30,11 @@ public:
 };
 
 // 완벽한 allocator 코드는 ==, != 를 제공해야 합니다.
+// 현재 allocator는 멤버 데이타 없으므로 그냥 true, false 반환
 template<typename T>
 bool operator==(const debug_alloc<T>&, const debug_alloc<T>&) {return true;}
 template<typename T>
-bool operator!=(const debug_alloc<T>&, const debug_alloc<T>&) {return true;}
+bool operator!=(const debug_alloc<T>&, const debug_alloc<T>&) {return false;}
 
 
 int main()
