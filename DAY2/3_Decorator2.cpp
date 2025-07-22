@@ -48,7 +48,10 @@ int main()
 	Emoticon e(&ps); // 이미 존재하는 객체(ps)에 기능을 추가하겠다는것
 	e.draw();	
 
-	Frame f(&ps);
+//	Frame f(&ps);
+	Frame f(&e); // 중첩된 기능추가 !!??
+				// 현재는 에러.
+				// 해결은 다음소스에서.. 
 	f.draw();		
 }
 
