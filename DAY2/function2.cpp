@@ -37,8 +37,19 @@ int main()
 
 
 	// 하지만 std::function 은 std::bind 의 반환값 보관은 가능
+	// std::bind 사용하면 2항 => 1항으로 변경가능 하므로. 변경해서 저장
 	f = std::bind(&f2, _1, 0);
 	f(10); // f2(10, 0);
+
+
+	// 멤버 함수도 가능합니다.
+	// => 멤버 함수는 객체도 같이 bind
+	Dialog dlg;
+	f = std::bind(&Dialog::Init, &dlg, _1, 0);
+	f(10); // dlg.Init(10, 0) 으로 호출
+
+	f = [](int a) { std::cout << "lambda\n";};
+	f(0);
 }
 
 
