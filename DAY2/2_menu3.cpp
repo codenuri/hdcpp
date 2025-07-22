@@ -31,20 +31,34 @@ public:
 
 	void command()
 	{		
-		auto sz = v.size();
-
-		for( int i = 0; i < sz; i++)
+		while( true)
 		{
-			std::cout << i + 1 << ". " << v[i]->get_title() << '\n';
-		}
-		std::cout << sz + 1 << ". 종료\n";
-		
-		std::cout << "메뉴 선택하세요 >> ";
-		int cmd;
-		std::cin >> cmd;
+			system("cls"); // 화면지우기 명령. 에러나오면 지우세요 system("clear")
 
-		// 선택된 메뉴 실행
-		v[cmd-1]->command();
+			// 아래 코드 이위치에
+			auto sz = v.size();
+
+			for( int i = 0; i < sz; i++)
+			{
+				std::cout << i + 1 << ". " << v[i]->get_title() << '\n';
+			}
+			std::cout << sz + 1 << ". 종료\n";
+
+			std::cout << "메뉴 선택하세요 >> ";
+			int cmd;
+			std::cin >> cmd;
+
+			if ( cmd == sz + 1) // 종료 선택
+				?;
+
+			if ( cmd < 1 || cmd > sz + 1)	// 잘못된 입력
+				?;
+
+			// 선택된 메뉴 실행
+			v[cmd-1]->command();
+		}
+
+	
 
 	}
 };
