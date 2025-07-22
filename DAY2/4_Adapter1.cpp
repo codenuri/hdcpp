@@ -41,6 +41,8 @@ public:
 // TextView 의 인터페이스를 변경(show=> draw 로 변경)해서
 // 도형편집기에서 사용할수 있게 하자
 
+// adapter 패턴 : 인터페이스의 불일치를 해결하는 패턴
+
 class Text : public TextView,  // 기능 물려받고
 			 public Shape      // 도형편집기 요구사항 만족
 {
