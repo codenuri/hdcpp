@@ -4,36 +4,32 @@
 
 // 메모리 할당기의 인터페이스
 template<typename T>
-struct ISync
+struct IAllocator
 {
 	virtual T* allocate(std::size_t sz) = 0;
 	virtual void deallocate(T* p, std::size_t sz) = 0;
-	virtual ~ISync() {}
+	virtual ~IAllocator() {}
 };
-
-
-
 
 template<typename T>
 class vector
 {
 	T* ptr;
+	IAllocator<T>* alloc;
 public:
-	void resize(int n)
-	{
-		//......
-		ptr = allocate(n);	// 메모리 할당이 필요하면 가상함수 호출
+	void set_allocator( IAllocator<T>* a) { alloc = a;}
 
-		//.....
-		deallocate(ptr, n);	// 메모리 메모리 해지도 가상함수 호출
+	void resize(int n)
+	{		
+		ptr = alloc->allocate(n);	// 메모리 할당기 사용
+
+		alloc->deallocate(ptr, n);	
 	}
-	virtual T* allocate(std::size_t sz) { return new T[sz];}
-	virtual void deallocate(T* p, std::size_t sz) { delete[] p;}
 };
 
-
+// 메모리 할당/해지 를 책임지는 "할당기" 클래스
 template<typename T> 
-class malloc_vector : public vector<T>
+class malloc_allocator : public IAllocator<T>
 {
 public:
 	T* allocate(std::size_t sz) override 
@@ -46,9 +42,10 @@ public:
 		free(p);
 	}
 };
-
 int main()
 {
-	malloc_vector<int> v;
+	vector<int> v;
+	malloc_allocator<int> ma;
+	v.set_allocator(&ma);
 	
 }
