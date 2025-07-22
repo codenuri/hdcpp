@@ -20,6 +20,23 @@ public:
 	}
 };
 
+class PopupMenu
+{
+	std::string title;
+	std::vector<MenuItem*> v;
+public:
+	PopupMenu( const std::string& t) : title(t) {}
+
+	void add(MenuItem* m) { v.push_back(m);}
+
+	void command()
+	{		
+	}
+};
+
+
+
+
 int main()
 {
 	MenuItem m1("김밥", 11);
