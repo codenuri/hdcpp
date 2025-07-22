@@ -21,20 +21,15 @@ public:
 	BaseMenu(const std::string& t) : title(t) {}
 
 	virtual ~BaseMenu() {} 
-	
+
 	std::string get_title() const { return title;}
 };
 
-
-
-class MenuItem 
+class MenuItem : public BaseMenu
 {
-
 	int id;
 public:
-	MenuItem(const std::string& t, int i) : title(t), id(i) {}
-
-
+	MenuItem(const std::string& t, int i) : BaseMenu(t), id(i) {}
 
 	void command()
 	{
@@ -44,14 +39,13 @@ public:
 	}
 };
 
-class PopupMenu
+class PopupMenu : public BaseMenu
 {
-	std::string title;
-	std::vector<MenuItem*> v;
+	std::vector<BaseMenu*> v; // <== composite 패턴의 핵심
 public:
-	PopupMenu( const std::string& t) : title(t) {}
+	PopupMenu( const std::string& t) : BaseMenu(t) {}
 
-	void add(MenuItem* m) { v.push_back(m);}
+	void add(BaseMenu* m) { v.push_back(m);}
 
 	void command()
 	{		
