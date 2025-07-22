@@ -96,8 +96,10 @@ int main()
 	pm2->add( new MenuItem("FHD", 22));
 	pm2->add( new MenuItem("UHD", 23));
 
+	// Composite 패턴 특징 : 객체(메뉴) 의 포함관계가 Tree 모양으로 됩니다.
+
 	// 이제 시작하려면 ?
-	// ??
+	root->command();
 
 }
 
