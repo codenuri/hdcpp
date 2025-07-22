@@ -21,8 +21,6 @@ public:
 
 	virtual void command() = 0;
 
-	// add 는 PopupMenu 에만 필요하지만
-	// 캐스팅 없이 사용하기 위해 BaseMenu 에서도 제공
 	virtual void add(BaseMenu*) { throw unsupported_operation();}
 	virtual BaseMenu* get_submenu(int idx) { throw unsupported_operation();}
 };
@@ -86,29 +84,50 @@ class MenuItem : public BaseMenu
 {
 	int id;
 
-	using HANDLER = void(*)();  // typedef void(*HANDLER)()
+	using HANDLER = std::function<void()>;
 
-	HANDLER handler = nullptr;
-
+	std::vector<HANDLER> v; // 메뉴 선택시 여러함수에 전달 가능하게
+							// observer 패턴 : 발생된 이벤트를 여러곳에 전달
 public:
-	MenuItem(const std::string& t, int i) : BaseMenu(t), id(i) {}
+	MenuItem(const std::string& t, int i, HANDLER h = nullptr) 
+		: BaseMenu(t), id(i) 
+	{
+		if ( h != nullptr )
+			v.push_back(h);
+	}
 
-	void set_handler(HANDLER h) { handler = h;}
+	void add_handler(HANDLER h) { v.push_back(h);}
+
+
 
 	void command() override
 	{
-		// 여기서 어떤 작업을 하면
-		// 모든 메뉴가 동일한 작업을 하게 됩니다.
-
-		// 여기서는 등록된 함수를 다시 호출해야 합니다.
-
-		if ( handler != nullptr )
-			handler();
+		// 등록된 모든 함수에게 메뉴가 선택되었음을 통보
+		for( auto f : v)
+			f();
 	}
 };
 
-void foo() { std::cout << "foo\n";_getch();}
+// 테스트용 코드
+// function3.cpp 안에 foo, goo, Car 복사해오세요
+void foo()       { std::cout << "foo\n"; _getch(); }
+void goo(int id) { std::cout << "goo : " << id << '\n'; _getch(); }
 
+class Car
+{
+public:
+	void start_record(int resolution) 
+	{
+		std::cout << "녹화시작. 해상도 : " << resolution << '\n';
+		_getch();
+	}
+	void end_record()
+	{
+		std::cout << "녹화종료 \n";
+		_getch();
+	}
+};
+//---------------------------------------------
 int main()
 {
 	PopupMenu* root = new PopupMenu("ROOT");
@@ -118,20 +137,21 @@ int main()
 	root->add(pm1);
 	root->add(pm2);
 
-	MenuItem* mi = new MenuItem("WHITE", 10);
-	mi->set_handler(&foo);
-
-	pm1->add(mi);
-
-
 	pm1->add( new MenuItem("RED",   11));
 	pm1->add( new MenuItem("GREEN", 12));
 	pm1->add( new MenuItem("BLUE",  13));
 	pm1->add( new MenuItem("WHITE",  14));
 
-	pm2->add( new MenuItem("HD",  21));
-	pm2->add( new MenuItem("FHD", 22));
-	pm2->add( new MenuItem("UHD", 23));
+	MenuItem* mi = new MenuItem("HD",  21, &foo);
+
+	pm2->add( mi );
+	pm2->add( new MenuItem("FHD", 22, std::bind(&goo, 22)));
+	pm2->add( new MenuItem("UHD", 23, std::bind(&goo, 23)));
+
+	Car car;
+	mi->add_handler(std::bind(&Car::start_record, &car, 1024));
+	mi->add_handler(std::bind(&Car::end_record, &car));
+	mi->add_handler([](){std::cout << "lambda\n";_getch();});
 
 	root->command();
 	delete root; 
