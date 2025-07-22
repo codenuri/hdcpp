@@ -9,7 +9,13 @@ int main()
 {
 	std::vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-	for( auto e : std::views::take(v, 5)) 
+	using namespace std::views;
+
+	auto odd = [](int n) { return n % 2 == 1;};
+
+//	for( auto e : std::views::take(v, 5)) 
+//	for( auto e : reverse(take(v, 5))) 
+	for( auto e : filter(reverse(take(v, 5)), odd) ) 
 	{
 		std::cout << e << std::endl;
 	}
