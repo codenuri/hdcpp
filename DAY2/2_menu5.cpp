@@ -23,7 +23,11 @@ public:
 	virtual ~BaseMenu() {} 
 
 	std::string get_title() const { return title;}
+
+	// 모든 메뉴는 선택될수 있다.
+	virtual void command() = 0;
 };
+
 
 class MenuItem : public BaseMenu
 {
@@ -31,7 +35,7 @@ class MenuItem : public BaseMenu
 public:
 	MenuItem(const std::string& t, int i) : BaseMenu(t), id(i) {}
 
-	void command()
+	void command() override
 	{
 		std::cout << get_title() << "메뉴 선택됨\n";
 
@@ -47,7 +51,11 @@ public:
 
 	void add(BaseMenu* m) { v.push_back(m);}
 
-	void command()
+
+
+
+
+	void command() override
 	{		
 		while( true)
 		{
