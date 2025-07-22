@@ -47,15 +47,18 @@ class Text : public TextView,  // 기능 물려받고
 public:
 	Text(const std::string& data) : TextView(data) {}
 
+	// 아래 코드가 show 이름을 draw 로 변경한것
 	void draw() override 
 	{
-		?;
+		TextView::show();
 	}
 };
 
 int main()
 {
 	std::vector<Shape*> v;
+	v.push_back(new Text("hello"));
+	v[0]->draw();
 }
 
 
