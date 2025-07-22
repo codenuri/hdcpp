@@ -86,11 +86,13 @@ int main()
 	PopupMenu* pm2  = new PopupMenu("해상도 변경");
 
 	root->add(pm1);
-	root->add(pm2);
+//	root->add(pm2);
+	pm1->add(pm2);
 
 	pm1->add( new MenuItem("RED",   11));
 	pm1->add( new MenuItem("GREEN", 12));
 	pm1->add( new MenuItem("BLUE",  13));
+	pm1->add( new MenuItem("WHITE",  14));
 
 	pm2->add( new MenuItem("HD",  21));
 	pm2->add( new MenuItem("FHD", 22));
@@ -104,5 +106,18 @@ int main()
 }
 
 
+// 객체지향 프로그램에서 "프로그램" 이란?
+
+// 1. 객체 생성하고
+// 2. 객체 간의 관계를 설정하고
+// 3. 객체 간의 메세지를 주고 받는 과정이다.(서로의 멤버 함수 호출)
+
+// 4. 프로그램의 기본 단위는 "함수" 가 아닌 "클래스" 이다.
+
+// 장점 : 유지보수가 편리하고, 확장성이 있다.
+
+// 단점 : C보다 느리고(가상함수, 함수호출증가), 
+// 		  메모리 사용량 증가(가상함수테이블, 필요없는 멤버데이타등)
+//        어렵다!!(C보다 아주 배우기 어렵다)
 
 
