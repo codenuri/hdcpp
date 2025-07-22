@@ -50,6 +50,20 @@ public:
 	}
 };
 
+
+class ObjectAdapter : public Shape      
+{
+	TextView* origin; // 핵심 : 포인터 또는 참조
+					  // 이미 존재하는 객체를 가리키겠다는것
+public:
+	ObjectAdapter(TextView* tv) : origin(tv) {}
+
+	void draw() override 
+	{
+		origin->show();
+	}
+};
+
 int main()
 {
 	std::vector<Shape*> v;
@@ -58,7 +72,11 @@ int main()
 						 // tv : 객체
 
 	// 이미 생성된 "객체 tv" 를 v에 넣을수 있을까요 ?
-	v.push_back(&tv); // ???
+//	v.push_back(&tv); // error. tv 는 Shape로 부터 상속안됨..
+
+	v.push_back(new ObjectAdapter(&tv) ); // ok.. 
+
+	v[0]->draw();
 }
 
 
