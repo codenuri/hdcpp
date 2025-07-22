@@ -24,7 +24,7 @@ public:
 };
 
 // Stream 에 기능을 추가하는 Decorator
-class ZipDecorator : public Stream
+class ZipDecorator : public Stream  // <== 중첩된 추가를 위해서 상속
 {
 	Stream* origin;
 public:
@@ -34,6 +34,19 @@ public:
 	{
 		auto s = "[ " + data + "] 압축됨"; // 추가된 기능
 		origin->write(s);				   // origin 객체에 전달	
+	}
+};
+
+class EncryptDecorator : public Stream  
+{
+	Stream* origin;
+public:
+	EncryptDecorator(Stream* s) : origin(s) {}
+
+	void write(const std::string& data) override 
+	{
+		auto s = "[ " + data + "] 암호화됨";
+		origin->write(s);				   
 	}
 };
 
