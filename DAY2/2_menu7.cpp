@@ -99,8 +99,13 @@ int main()
 
 	//------------------------------------
 	// 아래 코드를 생각해 봅시다.
-	root->get_submenu(0)->add( new MenuItem("BLACK", 13));
-	
+//	root->get_submenu(0)->add( new MenuItem("BLACK", 13));
+	// 		^ 팝업메뉴 이지만 타입이 BaseMenu*  
+	//		따라서 add 호출 안됨. error
+
+	// 해결책 #1. 캐스팅 
+	static_cast<PopupMenu*>(root->get_submenu(0))->add( new MenuItem("BLACK", 13));
+
 
 
 
