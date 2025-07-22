@@ -2,7 +2,7 @@
 #include <vector>
 
 template<typename T> 
-class debug_allo
+class debug_alloc
 {
 public:
 	inline T* allocate(std::size_t sz) 
@@ -23,7 +23,7 @@ public:
 	// => 관례적인 코드 무조건 복사해서 이름만 변경후 사용하면 됩니다.
 	using value_type = T;
 
-	debug_alloc();
+	debug_alloc() {}
 
 	template<typename U>
 	debug_alloc(const debug_alloc<U>&) {}  // generic 생성자라는 개념
