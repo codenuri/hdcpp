@@ -28,3 +28,17 @@ public:
 		origin->show();
 	}
 };
+
+// 의도 
+// Decorator : 기능의 추가. 인터페이스는 동일
+FileStream fs("a.txt");
+ZipDecorator zd(&fs);
+fs.write("hello"); //
+zd.write("hello"); // 원본과 동일한 사용법. 하지만 기능 추가
+
+// Adapter : 인터페이스 변경. 기능 동일
+TextView tv("abcd");
+ObjectAdapter oa(&tv);
+
+tv.show(); 
+oa.draw(); // 함수 이름이 변경됨. 기능은 동일
