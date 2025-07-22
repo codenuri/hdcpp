@@ -80,7 +80,7 @@ int main()
 	PopupMenu pm("오늘의 점심");
 	pm.add(&kimbab); // <=== 핵심. 현재 코드는 에러
 					 //            어떻게 해야 할까요 ? 다음소스에서 해결
-	pm.add(&m6);
+	pm.add(&m9);
 
 	pm.command(); 
 }
