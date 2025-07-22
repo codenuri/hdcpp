@@ -15,28 +15,27 @@ class Emoticon
 {
 	PhotoSticker* origin = nullptr; // 핵심 : 포인터 또는 참조 멤버로
 									//        값 타입 아님.
+									// "이미 생성된 객체"를 가리키겠다는 것
 public:	
 	Emoticon(PhotoSticker* o) : origin(o) {}
 
-
-	
 	void draw()
 	{
 		std::cout << "####################\n";	
-		PhotoSticker::draw();					
+		origin->draw();					
 		std::cout << "####################\n";
 	}
 };
 
-
-
-class Frame : public PhotoSticker
+class Frame 
 {
+	PhotoSticker* origin = nullptr; 
 public:	
+	Frame(PhotoSticker* o) : origin(o) {}
 	void draw()
 	{
 		std::cout << "--------------------\n";	
-		PhotoSticker::draw();					
+		origin->draw();						
 		std::cout << "--------------------\n";
 	}
 };
@@ -46,12 +45,10 @@ int main()
 	ps.take();	
 	ps.draw();	
 
-	Emoticon e;
-	e.take();	
+	Emoticon e(&ps); // 이미 존재하는 객체(ps)에 기능을 추가하겠다는것
 	e.draw();	
 
-	Frame f;
-	f.take();	
+	Frame f(&ps);
 	f.draw();		
 }
 
