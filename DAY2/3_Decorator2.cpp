@@ -11,9 +11,15 @@ public:
 
 // 상속을 사용한 기능의 추가 : 클래스에 기능을 추가한것
 // 포함을 사용한 기능의 추가 : 객체에 기능을 추가할수 있다.
-class Emoticon : public PhotoSticker
+class Emoticon 
 {
+	PhotoSticker* origin = nullptr; // 핵심 : 포인터 또는 참조 멤버로
+									//        값 타입 아님.
 public:	
+	Emoticon(PhotoSticker* o) : origin(o) {}
+
+
+	
 	void draw()
 	{
 		std::cout << "####################\n";	
@@ -21,6 +27,9 @@ public:
 		std::cout << "####################\n";
 	}
 };
+
+
+
 class Frame : public PhotoSticker
 {
 public:	
