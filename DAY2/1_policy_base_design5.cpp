@@ -51,7 +51,7 @@ int main()
 					// size : 7
 					// capacity(메모리사용량) : 10
 	
-	std::cout << v.size() << ", " << std::v.capacity() << std::endl;
+	std::cout << v.size() << ", " << v.capacity() << std::endl;
 
 	std::cout << "-----------------" << std::endl;		
 }
