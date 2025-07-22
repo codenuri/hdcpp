@@ -2,8 +2,11 @@
 
 // 방법 #3. 변하는 것을 다른 클래스로
 
+#include <memory> 
 
-template<typename T, typename Alloc>
+// std::allocator<T> : C++ 표준에 있는 메모리 할당기
+//                     내부적으로 new/delete 사용
+template<typename T, typename Alloc = std::allocator<T> >
 class vector
 {
 	T* ptr;
@@ -36,6 +39,7 @@ public:
 };
 int main()
 {
-	vector<int, malloc_allocator<int>> v;
+//	vector<int, malloc_allocator<int>> v;
+	vector<int> v; // std::allocator<int> 사용
 	
 }
