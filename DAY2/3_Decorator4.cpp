@@ -65,7 +65,7 @@ int main()
 
 	Frame f(&e); 
 	f.draw();	
-	
+/*	
 	// A. 그냥.. 아래 처럼하면 안되나요 ?
 	PhotoSticker p;
 	p.take();
@@ -73,7 +73,7 @@ int main()
 	p.add_filter(new EmoticonFilter);
 	p.add_filter(new FrameFilter);
 	p.draw(); // 원래 그림그리고, 등록된 필터의 draw도 호출
-
+*/
 	// A 와 Decorator 패턴의 차이는 ??
 	// A : 필터 추가후에는 원본기능만 사용하고 싶다면
 	//     다시 필터 제거해야 합니다.
