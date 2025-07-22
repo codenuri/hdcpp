@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <conio.h> 
+#include "getch.h" // DAY1 에서 복사해오세요
 
 class MenuItem 
 {
@@ -16,7 +17,7 @@ public:
 	{
 		std::cout << get_title() << "메뉴 선택됨\n";
 
-		getchar(); 
+		_getch(); 
 	}
 };
 
