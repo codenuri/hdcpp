@@ -26,10 +26,19 @@ int main()
 
 	// C++ 의 std::function 은 함수 포인터를 발전시킨 타입 입니다.
 	// 사용법 : std::function<함수타입>
+	// 함수 타입       : void(int)
+	// 함수 포인터 타입 : void(*)(int)
 
 	std::function<void(int)> f;
 	f = &f1;
 	f(10); // f1(10);
+
+//	f = &f2; // error. f2 는 인자가 2개
+
+
+	// 하지만 std::function 은 std::bind 의 반환값 보관은 가능
+	f = std::bind(&f2, _1, 0);
+	f(10); // f2(10, 0);
 }
 
 
