@@ -40,4 +40,18 @@ int main()
 	v.resize(5);
 
 	std::cout << "-----------------" << std::endl;
+
+	v.resize(10);	// 1. 10개 메모리 할당 - 로그
+					// 2. 5개 메모리 내용 => 10개 버퍼에 복사
+					// 3. 5개 메모리 해지 - 로그
+
+	std::cout << "-----------------" << std::endl;	
+
+	v.resize(7);	// 크기가 줄어들때는 메모리 재할당 없음
+					// size : 7
+					// capacity(메모리사용량) : 10
+	
+	std::cout << v.size() << ", " << std::v.capacity() << std::endl;
+
+	std::cout << "-----------------" << std::endl;		
 }
