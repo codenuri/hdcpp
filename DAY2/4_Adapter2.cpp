@@ -53,8 +53,12 @@ public:
 int main()
 {
 	std::vector<Shape*> v;
-	v.push_back(new Text("hello"));
-	v[0]->draw();
+
+	TextView tv("abcd"); // TextView : 클래스
+						 // tv : 객체
+
+	// 이미 생성된 "객체 tv" 를 v에 넣을수 있을까요 ?
+	v.push_back(&tv); // ???
 }
 
 
