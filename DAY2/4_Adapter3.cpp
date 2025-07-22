@@ -13,9 +13,12 @@ public:
 	T& top() 			  { return std::list<T>::back();}
 };
 
-
 int main()
 {
 	stack<int> s;
 	s.push(10);
+
+	// 단점 : 아래처럼 사용할수 없게해야 합니다
+	s.push_front(20); //!!!
+
 }
