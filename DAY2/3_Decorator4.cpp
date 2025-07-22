@@ -22,7 +22,7 @@ public:
 
 class Decorator : public IDraw 
 {
-	IDraw* oring = nullptr;
+	IDraw* origin = nullptr;
 	// int x, y 등.. 공통적인 데이타
 public:
 	Decorator(IDraw* o) : origin(o) {}
@@ -31,30 +31,26 @@ public:
 };
 
 
-class Emoticon  : public IDraw
-{
-	IDraw* origin = nullptr; 
+class Emoticon  : public Decorator
+{ 
 public:	
-	Emoticon(IDraw* o) : origin(o) {}
-
+	Emoticon(IDraw* o) : Decorator(o) {}
 	void draw()
 	{
 		std::cout << "####################\n";	
-		origin->draw();					
+		Decorator::draw();					
 		std::cout << "####################\n";
 	}
 };
-
-class Frame  : public IDraw
-{
-	IDraw* origin = nullptr; 
+class Frame  : public Decorator
+{ 
 public:	
-	Frame(IDraw* o) : origin(o) {}
+	Frame(IDraw* o) : Decorator(o) {}
 
 	void draw()
 	{
 		std::cout << "--------------------\n";	
-		origin->draw();						
+		Decorator::draw();						
 		std::cout << "--------------------\n";
 	}
 };
