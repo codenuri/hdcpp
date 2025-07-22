@@ -22,9 +22,50 @@ using wstring = std::basic_string<wchar_t>;
 struct MyTrait : public std::char_traits<char>
 {
 	// cppreference.com 에서 char_traits 검색
+
+    static char to_upper(char ch)
+    {
+        return std::toupper((unsigned char) ch);
+    }
+ 
+    static bool eq(char c1, char c2)
+    {
+        return to_upper(c1) == to_upper(c2);
+    }
+ 
+    static bool lt(char c1, char c2)
+    {
+         return to_upper(c1) < to_upper(c2);
+    }
+ 
+    static int compare(const char* s1, const char* s2, std::size_t n)
+    {
+        while (n-- != 0)
+        {
+            if (to_upper(*s1) < to_upper(*s2))
+                return -1;
+            if (to_upper(*s1) > to_upper(*s2))
+                return 1;
+            ++s1;
+            ++s2;
+        }
+        return 0;
+    }
+ 
+    static const char* find(const char* s, std::size_t n, char a)
+    {
+        const auto ua{to_upper(a)};
+        while (n-- != 0) 
+        {
+            if (to_upper(*s) == ua)
+                return s;
+            s++;
+        }
+        return nullptr;
+    }	
 };
 
-using ci_string = basic_string<char, MyTrait>;
+using ci_string = std::basic_string<char, MyTrait>;
 
 int main()
 {
