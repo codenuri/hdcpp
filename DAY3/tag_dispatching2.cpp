@@ -7,7 +7,14 @@ class lock_guard
 {
 	T& mtx;
 public:	
-	lock_guard(T& m) : mtx(m) { mtx.lock();}
+	// lock()을 하지 않은 버전의 생성자 필요!!
+	// 어떻게 만들까요 ??
+	// 방법 #1. bool 를 사용한 flag
+	lock_guard(T& m, bool flag = true) : mtx(m) 
+	{ 
+		if ( flag == true)
+			mtx.lock();
+	}
 	~lock_guard()             { mtx.unlock();}
 };
 
