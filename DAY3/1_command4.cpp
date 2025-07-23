@@ -63,15 +63,24 @@ public:
 class AddRectCommand : public AddCommand 
 {
 public:
-	AddRectCommand(std::vector<Shape*>& v) : AddCommand(v) {}
+	//AddRectCommand(std::vector<Shape*>& v) : AddCommand(v) {}
+
+	// C++11 의 생성자 상속 문법
+	// => AddCommand 에 생성자가 5개 있다면 AddRectCommand 생성할때
+	//	  모두 사용가능
+	using AddCommand::AddCommand; // using 클래스이름::생성자이름
 
  	virtual Shape* create_shape() { return new Rect;}
 };
 
+
+
 class AddCircleCommand : public AddCommand 
 {
 public:
-	AddCircleCommand(std::vector<Shape*>& v) : AddCommand(v) {}
+	//AddCircleCommand(std::vector<Shape*>& v) : AddCommand(v) {}
+
+	using AddCommand::AddCommand; 
 
  	virtual Shape* create_shape() { return new Circle;}
 };
