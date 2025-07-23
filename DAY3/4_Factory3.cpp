@@ -35,7 +35,6 @@ public:
 };
 
 // 공장에 제품을 등록할때 사용할 클래스
-
 class AutoRegister
 {
 public:
@@ -46,7 +45,12 @@ public:
 };
 
 // 전역변수의 생성자가 호출되는 시점을 생각하세요
-AutoRegister ar(1, &Rect::create);
+// => main 함수 이전에 실행
+// => 즉, 아래 코드 때문에 main 이전에 이미 공장에 Rect 등록됨
+// AutoRegister ar(1, &Rect::create);
+
+
+
 
 
 
@@ -57,7 +61,24 @@ public:
 	void draw() override { std::cout << "draw Rect" << std::endl; }
 
 	static Shape* create() { return new Rect;}
+
+	// static 멤버 데이타의 특징을 생각해 보세요
+	// => 언제 생성되는가 ?
+	static AutoRegister ar(1, &Rect::create);
 };
+
+
+// C#  
+class Car 
+{
+	public Car() {}
+	public static Car() {} // 정적 생성자
+}
+Car c1 = new Car();
+Car c2 = new Car();
+Car c3 = new Car();
+
+
 
 
 
