@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stack>
 
 class Shape
 {
@@ -91,19 +92,36 @@ int main()
 {
 	std::vector<Shape*> v;
 
+	std::stack<ICommand*> undo_stack;
+	std::stack<ICommand*> redo_stack;
+
+	ICommand* command = nullptr;
+
 	while (1)
 	{
 		int cmd;
 		std::cin >> cmd;
 
-		if (cmd == 1) v.push_back(new Rect);
-		else if (cmd == 2) v.push_back(new Circle);
+		if (cmd == 1) 
+		{
+			command = new AddRectCommand();
+			command->execute();
+
+			undo_stack.push(command);
+		}
+		else if (cmd == 2) 
+		{
+			command = new AddCircleCommand();
+			command->execute();
+
+			undo_stack.push(command)
+		}
 		else if (cmd == 9)
 		{
-			for (auto s : v)
-			{
-				s->draw(); 
-			}
+			command = new DrawCommand();
+			command->execute();
+
+			undo_stack.push(command)
 		}
 	}
 }
