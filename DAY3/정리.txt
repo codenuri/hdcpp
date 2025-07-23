@@ -82,18 +82,31 @@ class Rect
 int main()
 {
 	// #1. 
-	Rect rc1;
+	Rect rc1;		// 수명이 정해짐. {} 벗어나면 파괴.
 
 	// #2.
-	Rect* rc2 = new Rect;
+	Rect* rc2 = new Rect;	// 수명이 자유롭다. 원할때 파괴.
+							// 자유로운것이 항상 좋은것은 아닙니다.
 
-	// #3. 
-	Rect* rc3 = Rect::create();
+	// #3. static 멤버 함수를 통한 객체 생성
+	// => 안전을 위한 여러가지 제약을 넣을수 있고
+	// => 자료구조에 보관도 가능
+	// => java 에서 "static factory method" 라고 합니다. 구글 검색해보세요
+	Rect* rc3 = Rect::create(); // 오직 한개 객체만 - 싱글톤
+								// 속성이 같으면공유 - flyweight
+								// 생성함수를 자료구조에 보관도 가능
+								// 읽기 좋은 코드  
+								// 1. Car c = new Car(Colors::red);
+								// 2. Car c = Car::redCar();
 
-	// #4.
+
+	// #4. prototype 패턴
 	Rect* rc4 = rc3->clone();
 
-	// #5. 
+	// #5. 공장에서 제품 생산
 	Rect* rc5 = factory.create();
 
 }
+
+// rust 코드
+// let s = String::new("hello")   // 여기서 new 는 static 메소드
