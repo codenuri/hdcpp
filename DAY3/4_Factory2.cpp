@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <vector>
+#include <map>
 #include "Helper.h"
 
 class Shape
@@ -84,7 +85,7 @@ int main()
 	factory.register_shape(1, &Rect::create);
 	factory.register_shape(2, &Circle::create);
 
-	
+
 	while (1)
 	{
 		int cmd;
