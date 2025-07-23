@@ -109,6 +109,20 @@ int main()
 {
 	std::vector<Shape*> v;
 
+	Macro* mc1 = new Macro;
+	mc1->add(new AddRectCommand(v));
+	mc1->add(new AddCircleCommand(v));
+	mc1->add(new DrawCommand(v));
+	mc1->execute();
+
+	Macro* mc2 = new Macro;
+	mc2->add(new AddRectCommand(v));
+	mc2->add(new AddCircleCommand(v));
+	mc2->add( ? );
+
+
+
+
 	std::stack<ICommand*> undo_stack;
 	std::stack<ICommand*> redo_stack;
 
