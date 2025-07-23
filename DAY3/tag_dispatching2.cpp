@@ -1,6 +1,12 @@
 #include <iostream>
 #include <mutex>
 
+// 아래와 같은 flag 사용의 단점
+// lock_guard<std::mutex> g(m, false);
+// 1. false 의 의미가 명확하지 않다.
+// 2. false 대신 "0, 1, 2" 등의 다른 표현도 가능
+// 3. if 문에 따른 성능저하
+
 
 template<typename T>
 class lock_guard 
