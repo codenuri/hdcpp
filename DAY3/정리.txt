@@ -61,7 +61,7 @@ policy base design 	:       빠르다(인라인도가능) 불가능
 //							간접층의 의도 : 인터페이스 변경을 위한 간접층
 //							adapter 패턴
 
-// 사용자 ========= BrightCommand ==========> monitor.set_brightness()
+// 사용자 ========= BrightnessCommand ======> monitor.set_brightness()
 //							간접층의 의도 : 명령의 저장, 취소 등을 위해서
 //							command 패턴
 // 이외에 
@@ -69,3 +69,31 @@ policy base design 	:       빠르다(인라인도가능) 불가능
 // bridge : update 를 편리하기 위한 간접층 
 // proxy  : 다양한 용도의 여러 장점을 위한 간접층
 //-----------------------------------------------
+// 디자인 패턴의 핵심 #4. 객체를 생성하는 다양한 방법을 이해하세요
+// 특히 "static factory method" 가 아주 널리 사용됩니다.
+
+// 7_객체생성정리
+class Rect
+{
+};
+
+// 객체를 만드는 방법
+
+int main()
+{
+	// #1. 
+	Rect rc1;
+
+	// #2.
+	Rect* rc2 = new Rect;
+
+	// #3. 
+	Rect* rc3 = Rect::create();
+
+	// #4.
+	Rect* rc4 = rc3->clone();
+
+	// #5. 
+	Rect* rc5 = factory.create();
+
+}
