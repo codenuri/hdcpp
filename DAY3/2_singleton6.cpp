@@ -5,7 +5,7 @@
 // => 자원 해지는 함수의 마지막 부분에서 하면 안된다. => 안전하지 않다.
 // => 생성자/소멸자에 의존해라!
 
-// Resource Acquision Is Initialization
+// Resource Acquision Is Initialization => C++ Idioms
 // 자원의 획득은 (자원관리 객체가) 초기화 될때(생성자) 이다.
 
 // => 자원의 해지가 아닌 "획득"에 포커스를 맞추어서 만든 용어
