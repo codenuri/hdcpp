@@ -19,4 +19,7 @@ int main()
 	m.set_brightness(90);
 
 	// 방법 #2. command 패턴 사용
+	BrightnessCommand cmd(m, 90);
+	cmd.execute();
+
 }
