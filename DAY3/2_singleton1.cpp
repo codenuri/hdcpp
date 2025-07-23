@@ -41,9 +41,15 @@ int main()
 }
 
 
+// 위 코드는 effective-c++ 의 저자인 "scott meyer" 가 처음 제안
+// 그래서, "meyer's singleton" 이라고 하고
 
+// C++로 만드는 싱글톤 중 "가장 좋은 코드" 로 알려진 코드
+// => 간결, 안전, 성능 모두 최선
 
-
+// policy base design 은 "modern c++ design" 책에서 소개
+// => 안드레이 알렉산드레스큐
+// => 2002년 발간
 
 
 
