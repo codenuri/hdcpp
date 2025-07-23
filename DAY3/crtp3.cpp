@@ -10,10 +10,12 @@ class Window
 public:
 	void event_loop()
 	{
-		click();	
+//		click();	 // this->click() 에서 this가 Window* 이므로
+
+		static_cast<MainWindow*>(this)->click();
 
 	}
-	virtual void click() { std::cout << "Window click\n"; }
+	void click() { std::cout << "Window click\n"; }
 };
 
 
