@@ -16,6 +16,7 @@ private:
 	// 규칙 #2.
 
 	// 규칙 #3. 오직 한개의 객체만 생성해서 반환하는 static 멤버 함수
+public:
 	static Cursor& get_instance()
 	{
 		static Cursor instance;
