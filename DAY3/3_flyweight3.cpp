@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include <string>
 #include <map>
-
+#include "helper.h"
 
 class Image
 {
@@ -28,6 +28,8 @@ public:
 
 class ImageFactory
 {
+	MAKE_SINGLETON(ImageFactory)
+
 	std::map<std::string, Image*> image_map;
 public:
 	Image* create(const std::string& url)
