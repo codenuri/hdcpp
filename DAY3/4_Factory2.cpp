@@ -29,23 +29,34 @@ public:
 
 // 하지만 함수 포인터는 보관 가능
 // v.push_back(&Rect::create); // ok
-
-
-
-
+//								// 이 정보로 객체 생성가능.
+								// 결국 클래스 이름을 보관 한것
 
 
 class Circle : public Shape
 {
 public:
 	void draw() override { std::cout << "draw Circle" << std::endl; }
+
+	static Shape* create() { return new Circle;}
 };
 
 
 class ShapeFactory
 {
 	MAKE_SINGLETON(ShapeFactory)
+
+	using CREATOR = Shape*(*)();
+	std::map<int, CREATOR> create_map; // <번호, 생성함수> 보관
+
 public:
+	void register_shape(int key, CREATOR c)
+	{
+		create_map[key] = c;
+	}
+
+
+
 	Shape* create(int type)
 	{
 		Shape* p = nullptr;
