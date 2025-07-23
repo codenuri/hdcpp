@@ -47,6 +47,7 @@ class ShapeFactory
 	MAKE_SINGLETON(ShapeFactory)
 
 	using CREATOR = Shape*(*)();
+
 	std::map<int, CREATOR> create_map; // <번호, 생성함수> 보관
 
 public:
@@ -60,8 +61,14 @@ public:
 	Shape* create(int type)
 	{
 		Shape* p = nullptr;
-		if      (type == 1)	p = new Rect;
-		else if (type == 2)	p = new Circle;
+		
+		auto ret = create_map.find(type);
+
+		if ( ret != create_map.end() )
+		{
+			p = ret->second(); // ret->second 는 value 즉, 생성함수
+		}
+
 		return p;
 	}
 };
