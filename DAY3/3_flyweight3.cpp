@@ -15,9 +15,22 @@ class Image
 public:	
 	void draw() { std::cout << "Draw " << image_url << std::endl; }
 
-	inline static std::map<std::string, Image*> image_map;
+	friend class ImageFactory;
+			// ImageFactory 에서는 Image 의 private 접근 가능
+};
 
-	static Image* create(const std::string& url)
+// SRP(Single Responsibility Principle)
+// => 단일 책임의 원칙
+// => 하나의 클래스는 하나의 책임만
+
+// Image : 그림 한개를 관리
+// ImageFactory : Image 객체의 생성과 공유를 관리
+
+class ImageFactory
+{
+	std::map<std::string, Image*> image_map;
+public:
+	Image* create(const std::string& url)
 	{
 		Image* img = nullptr;
 
@@ -36,7 +49,6 @@ public:
 		return img;
 	}
 };
-
 
 int main()
 {
