@@ -104,24 +104,24 @@ int main()
 
 		if (cmd == 1) 
 		{
-			command = new AddRectCommand();
+			command = new AddRectCommand(v);
 			command->execute();
 
 			undo_stack.push(command);
 		}
 		else if (cmd == 2) 
 		{
-			command = new AddCircleCommand();
+			command = new AddCircleCommand(v);
 			command->execute();
 
-			undo_stack.push(command)
+			undo_stack.push(command);
 		}
 		else if (cmd == 9)
 		{
-			command = new DrawCommand();
+			command = new DrawCommand(v);
 			command->execute();
 
-			undo_stack.push(command)
+			undo_stack.push(command);
 		}
 	}
 }
