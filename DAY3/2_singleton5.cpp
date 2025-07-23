@@ -38,6 +38,11 @@ public:
 	// => 1990 ~ 2000년대 초반 오픈소스에서 유행하던 기술
 	// => 2004 년 "C++에서 DCLP 은 버그이다." 라는 논문 발표
 	// => (scott mayer 가 안드레이 가 쓴 논문)
+
+	// 결론 
+	// #1. DCLP 를 사용하려면 reordering 을 막아야 합니다 - 금요일 설명
+	// #2. 성능이 정말 중요한것 아니면 DCLP 를 사용하지 마세요
+
 	static Cursor& get_instance()
 	{
 		if ( sinstance == nullptr )
@@ -49,9 +54,18 @@ public:
 				sinstance = new Cursor; // A
 
 				// A 부분의 원리
-				// 1. Cursor 생성 : malloc(sizeof(Cursor))
+				// 1. Cursor 생성 : temp = malloc(sizeof(Cursor))
 				// 2. Cursor 생성자 호출
 				// 3. (1)에서 생성된 객체 주소를 sinstance 에 넣기
+				//		sinstance = temp;
+
+				// 2와 3의 순서를 변경하면 temp 가 없어도 됩니다.
+
+				// 1. Cursor 생성 : sinstance = malloc(sizeof(Cursor))
+				// 3. (1)에서 생성된 객체 주소를 sinstance 에 넣기
+				//		=> 이제 이코드 필요 없습니다
+				// 2. Cursor 생성자 호출
+
 			}
 
 			m.unlock();
