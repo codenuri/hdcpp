@@ -123,6 +123,21 @@ int main()
 
 			undo_stack.push(command);
 		}
+		else if ( cmd == 0 )
+		{
+			if ( undo_stack.empty() != false )
+			{
+				command = undo_stack.top();
+				undo_stack.pop();
+
+				if ( command->can_undo() )
+				{
+					command->undo();
+				}
+				delete command; // redo 지원하려면 delete 하지말고
+								// redo_stack.push_back(command) 하세요
+			}
+		}
 	}
 }
 
