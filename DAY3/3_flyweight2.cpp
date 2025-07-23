@@ -44,6 +44,8 @@ public:
 
 int main()
 {
+	// IOS 의 cocoa touch 라이브러리의 UIImage 클래스가 아래 처럼 사용
+	
 	Image* img1 = Image::create("www.naver.com/a.png");
 	img1->draw();
 
