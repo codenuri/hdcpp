@@ -14,7 +14,7 @@ private:
 	// => static 멤버 데이타의 외부선언이 없어도 됩니다
 	// => 단, 자기 자신을 값으로 할때는 외부선언 필요
 	// => "inline static Cursor instance" 는 안됨
-	inline static Cursor* sinstance;
+	inline static Cursor* sinstance = nullptr;
 public:
 	static Cursor& get_instance()
 	{
