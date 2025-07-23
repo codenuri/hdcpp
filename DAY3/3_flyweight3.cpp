@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include <string>
 #include <map>
-#include "helper.h"
+#include "helper.h" // MAKE_SINGLETON 매크로!
 
 class Image
 {
@@ -54,7 +54,7 @@ public:
 
 int main()
 {
-	ImageFactory factory;
+	ImageFactory& factory = ImageFactory::get_instance();
 
 	Image* img1 = factory.create("www.naver.com/a.png");
 	img1->draw();
