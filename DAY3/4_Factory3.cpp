@@ -64,20 +64,35 @@ public:
 
 	// static 멤버 데이타의 특징을 생각해 보세요
 	// => 언제 생성되는가 ?
-	static AutoRegister ar(1, &Rect::create);
+	// => 최초 1회 - 아래 주석 참고
+	// => 주의 클래스 안에서 객체 만들때 () 사용시 에러
+	//     {} 사용하세요. 
+	inline static AutoRegister ar{1, &Rect::create};
 };
 
 
+
+/*
 // C#  
 class Car 
 {
 	public Car() {}
 	public static Car() {} // 정적 생성자
 }
-Car c1 = new Car();
-Car c2 = new Car();
-Car c3 = new Car();
 
+Car c1 = new Car(); // 1. 정적 생성자 호출
+					// 2. 생성자 호출
+Car c2 = new Car(); // 생성자
+Car c3 = new Car(); // 생성자
+*/
+// 생성자 : 객체의 초기화
+// 정적 생성자 : 클래스 자체의 초기화
+
+// 위 Rect 클래스
+//						// Rect::ar 생성자 - 최초 1회만 => 공장 등록
+// Rect* r1 = new Rect; // Rect 생성자
+// Rect* r2 = new Rect; // Rect 생성자
+// Rect* r3 = new Rect; // Rect 생성자
 
 
 
@@ -88,6 +103,8 @@ public:
 	void draw() override { std::cout << "draw Circle" << std::endl; }
 
 	static Shape* create() { return new Circle;}
+
+	inline static AutoRegister ar{2, &Circle::create};	
 };
 
 
@@ -99,10 +116,6 @@ int main()
 	std::vector<Shape*> v;
 
 	ShapeFactory& factory = ShapeFactory::get_instance();
-
-	// 공장에 제품(도형)을 등록해야 합니다.
-	factory.register_shape(1, &Rect::create);
-	factory.register_shape(2, &Circle::create);
 
 
 	while (1)
