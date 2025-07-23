@@ -24,8 +24,10 @@ int main()
 {
 	if ( m.try_lock() )
 	{
-		lock_guard<std::mutex> g(m); // 버그 : 생성자가 다시 "m.lock()"
+//		lock_guard<std::mutex> g(m); // 버그 : 생성자가 다시 "m.lock()"
 									 // 현재 mutex 는 이미 lock 상태
+
+		lock_guard<std::mutex> g(m, false);	// ok						  
 
 		// A ......
 		// B .....
