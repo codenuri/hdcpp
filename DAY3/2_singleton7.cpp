@@ -24,10 +24,6 @@ public:
 		return *sinstance;
 	} 
 
-
-		return *sinstance;
-	}
-
 };
 
 
