@@ -27,9 +27,9 @@ private:
 	inline static std::mutex m;
 	inline static Cursor* sinstance = nullptr;
 public:
-
+/*
 	static Cursor& get_instance()
-	{
+	{ 
 		m.lock();
 
 		if ( sinstance == nullptr )
@@ -42,6 +42,22 @@ public:
 
 		return *sinstance;
 	}
+*/
+
+	static Cursor& get_instance()
+	{ 
+		lock_guard<std::mutex> g(m);
+
+		if ( sinstance == nullptr )
+			sinstance = new Cursor;
+
+		// 여기서 예외가 발생하거나
+		// if(실패) return ; // 나중에 이런 실수를 하면
+						     // 아래 문장은 실행될수 없다.
+
+		return *sinstance;
+	}
+
 };
 
 
