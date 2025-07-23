@@ -31,15 +31,29 @@ public:
 	}
 	*/
 	// 해결책 : 2번의 if 문
-	// 최초 호출 : 
-	// 이후 호출 : 
+	// 최초 호출 : 2번의 if 문 실행 하므로 오버헤드(if 문 한번더 수행하므로)
+	// 이후 호출 : lock/unlock 을 수행하지 않습니다. 빨라집니다.
+
+	// DCLP(Double Check Locking Pattern) 이라고 합니다
+	// => 1990 ~ 2000년대 초반 오픈소스에서 유행하던 기술
+	// => 2004 년 "C++에서 DCLP 은 버그이다." 라는 논문 발표
+	// => (scott mayer 가 안드레이 가 쓴 논문)
 	static Cursor& get_instance()
 	{
 		if ( sinstance == nullptr )
 		{
 			m.lock();
+
 			if ( sinstance == nullptr )
-				sinstance = new Cursor;
+			{
+				sinstance = new Cursor; // A
+
+				// A 부분의 원리
+				// 1. Cursor 생성 : malloc(sizeof(Cursor))
+				// 2. Cursor 생성자 호출
+				// 3. (1)에서 생성된 객체 주소를 sinstance 에 넣기
+			}
+
 			m.unlock();
 		}
 
