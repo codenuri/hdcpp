@@ -26,13 +26,15 @@ public:
 
 };
 
+// Mouse 도 위와 동일한 싱글톤기술로 하고 싶다
+class Mouse 
+{
 
-
+};
 
 int main()
 {
-	Cursor& c1 = Cursor::get_instance();
-	Cursor& c2 = Cursor::get_instance();
+	Mouse& m1 = Mouse::get_instance();
 
 
 }
