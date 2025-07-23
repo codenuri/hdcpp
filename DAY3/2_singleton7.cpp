@@ -1,6 +1,19 @@
 #include <iostream>
 #include <mutex>
 
+// CRTP ( Curiously Recurring Template Pattern )
+// => 기반 클래스 만들때 파생 클래스 이름을 사용하게 하는 패턴
+// => 원리 : 템플릿 인자로 파생 클래스 이름을 받는것
+
+// 아래 코드가 "안드로이드 OS" 가 예전에 사용하던 코드
+// github.com/aosp-mirror 접속
+
+// platform system core  리포지토리
+
+// libutils/include/utils/singleton.h 에 있는 코드
+
+
+
 template<typename T>
 class Singleton
 {
