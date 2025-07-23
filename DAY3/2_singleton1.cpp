@@ -15,18 +15,20 @@ private:
 
 	// 규칙 #2.
 
-	// 규칙 #3. 오직 한개의 객체만 생성해서 반환하는 멤버 함수
-	Cursor& get_instance()
+	// 규칙 #3. 오직 한개의 객체만 생성해서 반환하는 static 멤버 함수
+	static Cursor& get_instance()
 	{
 		static Cursor instance;
 		return instance;
 	}
 };
-
-
 int main()
 {
-	Cursor c1, c2;
+	Cursor& c1 = Cursor::get_instance();
+	Cursor& c2 = Cursor::get_instance();
+
+	std::cout << &c1 << std::endl;
+	std::cout << &c2 << std::endl;
 }
 
 
