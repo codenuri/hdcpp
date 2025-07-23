@@ -41,7 +41,7 @@ int main()
 	// => 현재 시나리오에서는 click()을 직접 호출할 이유는 없습니다
 	// => 안전하게 protected 권장
 	Window* p = &w;
-	p->click();
+	p->click(); // "MainWindow" 가아닌 "Window click" 호출
 
 	w.event_loop();
 }
