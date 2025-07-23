@@ -87,6 +87,8 @@ int main()
 	factory.register_shape(2, blue_rect);
 	factory.register_shape(3, red_circle);
 
+	// 복습시 아래 함수 만드세요
+	factory.show_registered_product();
 
 
 	while (1)
