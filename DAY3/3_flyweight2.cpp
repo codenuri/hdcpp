@@ -29,6 +29,8 @@ public:
 		if ( ret != image_map.end() )
 		{
 			img = new Image(url);
+
+			image_map[url] = img;
 		}
 		else 
 		{
