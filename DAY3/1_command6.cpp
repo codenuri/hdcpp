@@ -88,6 +88,19 @@ public:
 	} 
 };
 
+// 여러 명령을 저장해서 한번에 실행하는 매크로
+class Macro
+{
+	std::vector<ICommand*> v;
+public:
+	void add(ICommand* cmd) { v.push_back(cmd);}
+
+	void execute()
+	{
+		for( auto cmd : v)
+			cmd->execute();
+	}
+};
 
 
 
