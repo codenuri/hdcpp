@@ -8,7 +8,13 @@
 
 class adopt_lock_t {};  // empty class
 
-adopt_lock_t adopt_lock;
+// adopt_lock_t adopt_lock; // 이렇게 하면 헤더에 넣을수 없습니다.
+
+// 헤더에 넣으려면
+
+constexpr adopt_lock_t adopt_lock; // 이렇게 하거나
+//inline  adopt_lock_t adopt_lock; // 이렇게 하세요
+
 
 
 template<typename T>
