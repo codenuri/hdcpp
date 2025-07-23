@@ -1,32 +1,32 @@
 #include <iostream>
 #include <mutex>
 
-
+template<typename T>
 class Singleton
 {
-private:
+protected:
 	Singleton() {}
 
 	Singleton(const Singleton&) = delete;
 	Singleton& operator=(const Singleton&) = delete;	
 
 	inline static std::mutex m;
-	inline static Singleton* sinstance = nullptr;
+	inline static T* sinstance = nullptr;
 public:
 
-	static Singleton& get_instance()
+	static T& get_instance()
 	{ 
 		std::lock_guard<std::mutex> g(m);
 
 		if ( sinstance == nullptr )
-			sinstance = new Singleton;
+			sinstance = new T;
 
 		return *sinstance;
 	} 
 };
 
 // Mouse 도 위와 동일한 싱글톤 기술로 하고 싶다
-class Mouse : public Singleton
+class Mouse : public Singleton< Mouse >
 {
 
 };
