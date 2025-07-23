@@ -26,7 +26,7 @@ public:
 
 		auto ret = image_map.find(url);
 
-		if ( ret != image_map.end() )
+		if ( ret == image_map.end() )
 		{
 			img = new Image(url);
 
@@ -40,11 +40,6 @@ public:
 		return img;
 	}
 };
-
-
-
-
-
 
 
 int main()
