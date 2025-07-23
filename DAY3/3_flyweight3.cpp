@@ -52,11 +52,12 @@ public:
 
 int main()
 {
+	ImageFactory factory;
 
-	Image* img1 = Image::create("www.naver.com/a.png");
+	Image* img1 = factory.create("www.naver.com/a.png");
 	img1->draw();
 
-	Image* img2 = Image::create("www.naver.com/a.png");
+	Image* img2 = factory.create("www.naver.com/a.png");
 	img2->draw();
 
 }
