@@ -30,6 +30,7 @@ int main()
 
 
 	// #4. 람다 표현식 사용 - C++11
+	// => 인라인 치환됨
 	std::sort(v.begin(), v.end(),  [](int a, int b) { return a < b;});
 
 }
