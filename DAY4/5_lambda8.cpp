@@ -15,15 +15,15 @@ int main()
 
 	f3(0);
 
-	std::cout << v1 << std::endl; // 100s
+	std::cout << v1 << std::endl; // 100
 
 	//==================================================
 	class CompilerGeneratedName 
 	{
-		int v1;
-		int v2;
+		int& v1;
+		int& v2;
 	public:
-		CompilerGeneratedName(int a, int b) : v1{a}, v2{b} {}
+		CompilerGeneratedName(int& a, int& b) : v1{a}, v2{b} {}
 
 		inline auto operator()(int a) const
 		{
