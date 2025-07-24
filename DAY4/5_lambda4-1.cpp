@@ -32,6 +32,11 @@ int main()
 	// 아래 코드가 에러 나오는 이유는 ?
 	auto f1 = [](int a, int b) { return a + b;};
 	f1      = [](int a, int b) { return a - b;};  // error
+										// 타입이 다릅니다.
+
+	// 람다표현식으로 초기화된 auto 변수에
+	// 다른 람다 담을수 없습니다.
+	// => 모든 람다표현식은 다른 타입
 }
 
 
