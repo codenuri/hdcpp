@@ -48,7 +48,7 @@ int main()
 Point& goo()
 {
 	Point p{1,2};
-	return p;
+	return p;	// 버그!!
 }
 
 
