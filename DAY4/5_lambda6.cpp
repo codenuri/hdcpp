@@ -19,6 +19,22 @@ int main()
 	// #3. 람다표현식에서 지역변수 사용하려면 캡쳐해야 합니다.
 	auto f2 = [v1, v2](int a) { return a + v1 + v2; }; 
 
+	// 캡쳐의 원리
+	// => 위 코드를 컴파일러가 아래처럼 변경합니다.
+	class CompilerGeneratedName 
+	{
+		// 지역변수 캡쳐시 "멤버 데이타 추가"
+		int v1;
+		int v2;
+	public:
+		CompilerGeneratedName(int a, int b) : v1{a}, v2{b} {}
+
+		inline auto operator()(int a) const 
+		{
+			return a + v1 + v2;
+		}
+	};
+	auto f3 = CompilerGeneratedName{v1, v2};
 
 }
 
