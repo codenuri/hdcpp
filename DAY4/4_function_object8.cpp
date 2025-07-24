@@ -1,4 +1,11 @@
 // cmp1, cmp2, Less, Greater 모두 복사해오세요
+inline bool cmp1(int a, int b) { return a < b; }
+inline bool cmp2(int a, int b) { return a > b; }
+
+struct Less { inline bool operator()(int a, int b) const { return a < b; } };
+struct Greater { inline bool operator()(int a, int b) const { return a > b; } };
+
+
 
 template<typename T> void Sort(T cmp)
 {
