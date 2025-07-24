@@ -25,12 +25,26 @@ public:
 		name = new char[strlen(c.name) + 1];
 		strcpy_s(name, strlen(c.name)+1, c.name);
 	}
+
+	// temporary(rvalue) 전용 복사 생성자
+	Cat(Cat&& c) : age{c.age}, name{c.name}
+	{	
+		// 임시객체가 파괴될때
+		// 자원삭제를 막기 위해 
+		// 자원 포인터 reset
+		c.name = nullptr;
+
+		// 위 코드를 수행하려면
+		// 임시객체도 "상수성" 없이 참조할수 있어야 합니다.
+		// 그래서 아래 문법을 만든것 
+		// Point&& r = Point{1,1}
+	}
 };
 
 Cat foo()
 {
 	Cat c{"yaong", 3};
-	return c;
+	return c;	// 임시객체반환
 }
 
 int main()
