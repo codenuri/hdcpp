@@ -27,8 +27,15 @@ void Sort(int* x, int sz , bool(*cmp)(int, int) )
 	}
 }
 //---------------------------------
+
+
 inline bool cmp1(int a, int b) { return a < b;}
+
+
 inline bool cmp2(int a, int b) { return a > b;}
+
+
+
 
 int main()
 {
