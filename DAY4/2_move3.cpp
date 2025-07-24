@@ -42,9 +42,17 @@ int main()
 {
 	Cat c1{"nabi", 2};
 
-	Cat c2 = c1; 
-	Cat c3 = foo();  
+	Cat c2 = c1; 	// c1 은 lvalue. 복사 생성자 호출
+	Cat c3 = foo(); // 우변은 임시객체(rvalue). 이동(move) 생성자 호출
 
-	Cat c4 = c2;
-	Cat c5 = c3;
+	Cat c4 = static_cast<Cat&&>(c2); // 이동 생성자 호출
+	Cat c5 = std::move(c3); // 이 함수가 위와 같은 캐스팅을 합니다.
 }
+
+// std::move 가 실제 자원이동하는 것 아닙니다.
+// => std::move 는 단지 rvalue  캐스팅 할뿐입니다.
+// => 캐스팅 결과로 해당 클래스의 "복사 생성자" 아닌 "이동 생성자" 가
+//    호출됩니다.
+
+// std::move 라는 함수 이름에 비판이 많습니다.
+// => 특히 "C++ 창시자"가 비판
