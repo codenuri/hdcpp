@@ -31,7 +31,7 @@ int main()
 	//-------------------------------
 	// 아래 코드가 에러 나오는 이유는 ?
 	auto f1 = [](int a, int b) { return a + b;};
-	f2      = [](int a, int b) { return a - b;};  // error
+	f1      = [](int a, int b) { return a - b;};  // error
 }
 
 
