@@ -19,6 +19,8 @@ int main()
 	// #3. 람다표현식에서 지역변수 사용하려면 캡쳐해야 합니다.
 	auto f2 = [v1, v2](int a) { return a + v1 + v2; }; 
 
+	std::cout << sizeof(f2) << std::endl; // 람다표현식의 크기
+	
 	// 캡쳐의 원리
 	// => 위 코드를 컴파일러가 아래처럼 변경합니다.
 	class CompilerGeneratedName 
