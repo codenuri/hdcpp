@@ -14,7 +14,9 @@ int main()
 	// => operator() 멤버 함수를 "상수함수로 하지말라"
 	auto f1 = [v1, v2](int a) mutable { v1 = 100; return a + v1 + v2; }; 
 
-	
+	f1(0); // v1 = 100 실행. 하지만 복사본
+
+	std::cout << v1 << std::endl; // 10 
 	
 	//==================================================
 	class CompilerGeneratedName 
