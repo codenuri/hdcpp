@@ -18,6 +18,7 @@ int main()
 	std::cout << v1 << std::endl; // 100
 
 	//==================================================
+	// 참조 캡쳐의 원리
 	class CompilerGeneratedName 
 	{
 		int& v1;
@@ -31,7 +32,7 @@ int main()
 			return a + v1 + v2;
 		}
 	};
-	auto f3 = CompilerGeneratedName{v1, v2};
+	auto f4 = CompilerGeneratedName{v1, v2};
 
 }
 
