@@ -51,6 +51,17 @@ Point& goo()
 	return p;	// 버그!!
 }
 
+/*
+void foo()
+{
+	int* p;
+	{
+		int n = 10;
+		p = &n;
+	}
+	*p = 10; // 버그!!
+}
+	*/
 
 
 
