@@ -17,7 +17,8 @@ int main()
 //	Point(1, 2);	// unnamed object
 					// 수명 : 자신을 선언한 문장의 끝(;)
 
-	Point(1,2), std::cout << "X\n";
+//	Point(1,2), std::cout << "X\n";
+	Point{1,2}, std::cout << "X\n";
 
 	std::cout << "-------" << std::endl;
 }
