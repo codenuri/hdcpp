@@ -2,7 +2,7 @@
 
 template<typename T> void Sort(T cmp)
 {
-	bool b = cmp(1, 2);
+	bool b = cmp(1, 2);  // "A"
 }
 int main()
 {
@@ -15,5 +15,5 @@ int main()
 	Sort(f2);
 }
 // 1. 생성된 Sort() 함수 갯수는 ?
-// 2. 각 Sort() 함수에서 인라인 치환 여부는 ?
+// 2. 각 Sort() 함수에서 "A" 부분 인라인 치환 여부는 ?
 // 3. Sort()를 제외한 나머지 함수의 갯수는 ?
