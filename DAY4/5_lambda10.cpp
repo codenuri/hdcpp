@@ -13,6 +13,9 @@ int main()
 	const auto f2 = [](int a) mutable { v1 = 10; return a + v1;};
 
 	f2(10); // error.
+			// f2는 상수 객체인데. 
+			// mutable 람다는 () 연산자가 non-const
+			// 호출할수 없음.
 
 	
 }
