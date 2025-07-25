@@ -21,5 +21,10 @@ int main()
 
     t1.join();
     t4.join();
+
+	// 
+	// std::thread 객체만 미리 만들어도 됩니다.
+	std::thread t5;     // 아직 함수 전달 안함. 아직 스레드는 생성안됨
+//	t5 = std::move(t1); // 이렇게 가능
 }
 
