@@ -3,6 +3,19 @@
 #include <future>
 using namespace std::literals;
 
+// std::async : 내부적으로 packaged_task 를 만들어서
+//				std::thread 로 수행
+//				사용자가 직접 "std::thread" 사용할필요없음.
+//				join  도 필요 없으므로 편리
+//				간단한 작업에 권장
+
+// std::packaged_task : 사용자가 직접 std::thread 로 스레드생성
+//						join()도 필요
+//						여러개 스레드를 만들어서 std::vector등으로
+//						관리하려면 이방식!
+
+
+
 int add(int a, int b)
 {
 	std::this_thread::sleep_for(2s);
@@ -13,7 +26,7 @@ int main()
 {
 //	int r1 = add(1, 2); // 주스레드가 실행
 
-	std::future<int> ft = std::async(add, 1, 2); // 새로운 스레드로 즉시실행
+	std::future<int> ft = std::async(&add, 1, 2); // 새로운 스레드로 즉시실행
 								
 	std::cout << "continue main\n";
 
