@@ -72,7 +72,7 @@ void parallel_sum(IT first, IT last, RT& result)
     {
         IT end = std::next(start, block_size);
 
-        thread_vec[i] = std::thread(sum<std::vector<int>::iterator, int>,
+        thread_vec[i] = std::thread(sum<std::vector<int>::iterator, long long>,
            					 start, end, std::ref(result_vec[i]));
 
         start = end;
