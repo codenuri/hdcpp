@@ -14,6 +14,8 @@ int main()
 {
 //	std::future<int> ft = std::async(&add, 1, 2); 
 
+	// 아래 처럼 만들면 "동기 실행" 처럼 보이게 됩니다.
+	// => 그런데, 스레드 생성 맞습니다. 
 	std::async(&add, 1, 2); 
 								
 	std::cout << "continue main\n";
