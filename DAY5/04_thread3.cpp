@@ -18,8 +18,22 @@ struct Work
 int main()
 {
 	std::thread t1(&foo, 1, 3.4);
-	std::thread t2(&foo, 1, 3.4);
-	std::thread t3(&foo, 1, 3.4);
-	std::thread t4(&foo, 1, 3.4);
+
+	Machine m;
+	std::thread t2(&Machine::Run, &m, 1, 3.4);
+	
+	Work w; 
+//	w(1, 3.4); // 함수객체이므로 이렇게 사용가능
+
+	std::thread t3(w, 1, 3.4);
+//	std::thread t3(&w, 1, 3.4); // error. (&w)(1,3.4) 는 안됨
+
+
+	std::thread t4([](){ std::cout << "lambda\n";});
+
+	t1.join();
+	t2.join();
+	t3.join();
+	t4.join();
 }
 
