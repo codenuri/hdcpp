@@ -6,7 +6,7 @@
 #include <iostream>
 #include "chronometry.h" // 성능측정을 위해서..
 
-constexpr std::size_t CNT = 1_000_000;
+constexpr std::size_t CNT = 1000000;
 
 std::vector<int> v;
 
