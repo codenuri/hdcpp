@@ -34,8 +34,35 @@ int main()
 
 	// #3. push_back 이 아닌 emplace_back 사용 
 	// => 완벽한 기술로 만든 함수 
+	// => 객체를 만들어서 전달하지 말고, 
+	//    객체를 만들기 위한 생성자 인자(x, y 값)을 전달하자.
+	// vector가 내부적으로
+	// 자신의 버퍼에 "new Point{1,2}" 로 Point 생성해서 보관
+
+	v.emplace_back(1, 2); // 1. vector 버퍼에 Point 생성 - 생성자
+						  // 2. "-------------"
+						  // 3. Point 소멸자
 
 
 	std::cout << "-----" << std::endl;
 }
 
+// main				  emplace_back			    Point(int x, int y)
+// new Point(1,2)    =================================> 
+// emplace_back(1,2) ====> 1, 2 도착
+//					       인자를 다시 생성자로 전달 ===>  	
+
+// vector<int>
+// => 그냥 push_back 하세요.
+// => int 는 생성자 개념 없음
+// => empalce_back 도 가능(동일 성능). 단, 가독성이 push_back 선호가 많음
+
+// vector<Point*>
+// => 그냥 push_back,  값이 아닌 주소 보관
+
+// vector<Point>
+// => emplace_back 이 push_back 보다좋음
+
+// push_back ==> emplace_back
+// push_front ==> emplace_front
+// insert     ==> emplace
