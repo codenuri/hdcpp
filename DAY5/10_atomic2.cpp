@@ -2,13 +2,18 @@
 #include <thread>
 #include <atomic>
 
-long x = 0;
+//long x = 0;
+
+std::atomic<long> x = 0; // 대부분의 멤버 함수가 CPU 의 명령으로
+						 // 동기화
 
 void foo()
 {
-    for (int i = 0; i < 100000; ++i)
+    for (int i = 0; i < 1000000; ++i)
     {
-        ++x; 
+//		x.fetch_add(1); // x = x + 1 를 CPU 명령으로 수행
+      	++x; 	// 위와 동일
+				// x.operator++()(long n) { fetch_add(n);}
     }
 }
 
