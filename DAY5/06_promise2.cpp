@@ -31,7 +31,7 @@ int main()
 	// #3. 스레드 생성시 promise객체를 전달합니다.
 	std::thread t(&add, 1, 2, std::ref(pro));
 
-	std::cout << "continue main\n"
+	std::cout << "continue main\n";
 
 	// #4. 주스레드가 다른 작업하다가 결과가 필요하면
 	//		future 에서 꺼내면 됩니다.
@@ -40,6 +40,6 @@ int main()
 
 	std::cout << "result : " << ret << std::endl;
 
-	
+
 	t.join();
 }
