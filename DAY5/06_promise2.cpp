@@ -33,5 +33,13 @@ int main()
 
 	std::cout << "continue main\n"
 
+	// #4. 주스레드가 다른 작업하다가 결과가 필요하면
+	//		future 에서 꺼내면 됩니다.
+	int ret = ft.get(); // 결과가없으면 대기
+						// ft.wait(2s); 2초만 대기
+
+	std::cout << "result : " << ret << std::endl;
+
+	
 	t.join();
 }
