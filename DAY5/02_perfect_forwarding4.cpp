@@ -33,10 +33,10 @@ int main()
 	chronometry(foo, 10); 	// T = int, T&& = int&&
 							// chronometry(F, int&&)
 							// => static_cast<int&&>(arg)
-							
-	chronometry(goo, n);	// T = ? T&& = ?
-							// chronometry(F, ?)
-							// => static_cast<?>(arg)
+
+	chronometry(goo, n);	// T = int&, T&& = int& && => int&
+							// chronometry(F, int&)
+							// => static_cast<int&>(arg)
 }
 
 // foo, goo 복사해오세요
