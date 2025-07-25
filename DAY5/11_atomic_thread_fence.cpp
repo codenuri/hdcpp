@@ -18,7 +18,6 @@ void foo()
 
     b = 1;
 }
-
 // thread B
 void goo()
 {
@@ -28,6 +27,10 @@ void goo()
     }
 }
 
+// 멀티스레드시에 고려할것은 3가지
+// 1. 동시접근
+// 2. reordering (순서 변경)
+// 3. visibility (캐쉬가 아닌 메모리에 실제 쓰였는가 ?)
 
 
 
