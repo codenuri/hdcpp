@@ -11,9 +11,11 @@ void foo(T& t)
 }
 
 int main()
-{
+{	
+	int n = 10;
 	std::vector<int> v = {1,2,3,4,5};
 	
-	foo(v);
+	foo(v); // ok
+	foo(n); // ?
 }
 
