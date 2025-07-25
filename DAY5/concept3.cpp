@@ -17,14 +17,22 @@ void foo(int a) {}
 void foo(double a) {}
 
 // 타입이 아닌 조건에 따른 오버로딩을 할수 없을까요 ?
-// => resize()함수가 있는 타입과 없는 타입
-void goo( resize가 있는 타입 ){}
-void goo( resize가 없는 타입 ){}
+// => size 에 따라 오버로딩
+
+template<typename T>
+concept big_size = sizeof(T) >= 8;
+
+template<typename T>
+concept small_size = sizeof(T) < 8;
+
+void goo( big_size auto a ) { std::cout << "big size\n";}
+void goo( small_size auto a ){ std::cout << "small size\n";}
 
 
 int main()
 {	
-	std::vector<int> v = {1,2,3,4,5};
-	
-	foo(v); // ok
+	double d = 0;
+	int n = 0;
+	goo(d);
+	goo(n);
 }
