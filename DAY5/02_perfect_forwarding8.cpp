@@ -1,6 +1,7 @@
 #include <iostream>
 #include <thread>
 #include "chronometry.h"
+using namespace std::literals;
 
 void foo(int a, double d)
 {
