@@ -47,6 +47,9 @@ void parallel_sum(IT first, IT last, RT& result)
     const std::size_t cnt_thread =
         std::min(cnt_hw_thread, max_cnt_thread);
 
+	std::cout << "thread count : "	<< cnt_thread << std::endl;
+
+
     const std::size_t block_size = cnt_element / cnt_thread;
     std::vector<std::thread> thread_vec(cnt_thread - 1);
     std::vector<RT> result_vec(cnt_thread);
